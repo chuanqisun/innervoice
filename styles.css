@@ -1,11 +1,9 @@
-@font-face { font-family: Segoe UI Light; src: url('./fonts/segoeuil.ttf'); } 
-
 * {
   padding: 0;
   margin: 0;
   color: #999;
   background-color: white;
-  font-family: 'Segoe UI Light', 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 100;
   font-size: 14px;
 }
