@@ -3,17 +3,14 @@
   margin: 0;
   color: #999;
   background-color: white;
-  font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 100;
+  // font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 14px;
+  font-weight: 300;
 }
 
 *:focus {
     outline: none;
-}
-
-a {
-  // text-decoration: none;
 }
 
 body {
@@ -55,15 +52,25 @@ footer {
 
 .logo {
   color: #666;
-  font-size: 2.6em;
   padding: 40px;
   text-align: center;
 }
 
-.super-icon {
+.logo-icon {
+  font-size: 4em;
+}
+
+.logo-text {
+  font-size: 2.6em;
+  font-variant: small-caps;
+}
+
+.logo-super {
   position: fixed;
-  transform: translateY(-0.5em);
-  font-size: 0.8em;
+  font-size: 1.3em;
+  padding: 2px;
+  transform: translateX(0.3em) translateY(-0.1em);
+  color: #BBB;
 }
 
 .row {
