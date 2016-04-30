@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Iconset';
-  src: url('./icons/icomoon.woff');
+  src: url('icomoon.woff');
 }
 
 * {
