@@ -13,23 +13,34 @@
 }
 
 a {
-  text-decoration: none;
+  // text-decoration: none;
 }
 
 body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  text-align: center;
 }
 
-input, textarea {
+h1 {
+  font-size: 1.4em;
+}
+
+p {
+  font-size: 1.1em;
+}
+
+section + section {
+  margin-top: 20px;
+}
+
+input {
   -webkit-appearance: none;
   -webkit-border-radius: 0;
 }
 
-footer a {
-  font-size: 1.8em;
+footer {
+  text-align: center;
 }
 
 .flex-container {
@@ -38,6 +49,7 @@ footer a {
   align-items: center;
   justify-content: center;
   align-content: center;
+  padding: 15px;
   height: 100%;
 }
 
@@ -45,6 +57,7 @@ footer a {
   color: #666;
   font-size: 2.6em;
   padding: 40px;
+  text-align: center;
 }
 
 .super-icon {
@@ -58,7 +71,7 @@ footer a {
 }
 
 .responsive-column {
-  width: 80%;
+  width: 100%;
   max-width: 420px;
   font-size: 1.4em;
 }
