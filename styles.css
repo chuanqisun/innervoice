@@ -31,10 +31,6 @@ p {
   font-size: 1.1em;
 }
 
-section + section {
-  margin-top: 20px;
-}
-
 input {
   -webkit-appearance: none;
   -webkit-border-radius: 0;
@@ -42,6 +38,22 @@ input {
 
 footer {
   text-align: center;
+}
+
+.router > .dynamic-route {
+    display: none;
+}
+
+.router > .dynamic-route:last-child {
+    display: block;
+}
+
+.router > .dynamic-route:target {
+    display: block;
+}
+
+.router > .dynamic-route:target ~ .dynamic-route {
+    display: none;
 }
 
 .flex-container {
@@ -56,7 +68,7 @@ footer {
 
 .logo {
   color: #666;
-  padding: 20px;
+  padding: 40px;
   text-align: center;
 }
 
@@ -68,13 +80,11 @@ footer {
 .logo-text {
   font-size: 2.6em;
   font-variant: small-caps;
-  display: block;
 }
 
 .logo-super {
-  position: relative;
-  left: 6.2em;
-  top: -2.4em;
+  position: absolute;
+  margin-left: 5px;
   font-size: 1.3em;
   color: #BBB;
 }
@@ -101,7 +111,7 @@ footer {
   color: #666;
 }
 
-#mc_embed_signup {
+#mc-embedded-subscribe-form {
   text-align: center;
 }
 

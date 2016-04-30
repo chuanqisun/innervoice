@@ -8,20 +8,40 @@
   <meta name="description" content="Artistically crafted playlists every once in a while">
   <meta name="author" content="Chuanqi">
   <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="styles.css">
+  <link href="styles.css" rel="stylesheet" type="text/css">
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 </head>
 
 <body>
-    <div class="flex-container">
+    <div class="flex-container router">
         <div class="flex-item logo row">
           <span class="logo-icon">&#xe904;</span><br/>
           <span class="logo-text">Inner Voice</span><sup class="logo-super">BETA</sup>
         </div>
-        <!-- Begin MailChimp Signup Form -->
-        <div id="mc_embed_signup" class="row">
+
+        <!-- verify view -->
+        <div id="verify" class="dynamic-route">
+          <h1>Almost finished...</h1>
+          <br/>
+          <p>We need to confirm your email address.</p>
+          <p>To complete the subscription process, please click the link in the email we just sent you.</p>
+          <br/>
+          <P>Couldn't not find the email? Look into the spam folder or <a href="#signup">try again</a> with a different email address.</P>
+        </div>
+
+        <!-- confirm view -->
+        <div id="confirm" class="dynamic-route">
+          <h1>Thank you!</h1>
+          <br/>
+          <p>You have successfully subscribed to playlist updates from Inner Voice.</p>
+          <br/>
+          <p>The next playlist will be delievered to your email address when it's ready.</p>
+        </div>
+        
+        <!-- Default view: Begin MailChimp Signup Form -->
+        <div id="signup" class="row dynamic-route">
             <form action="//azurewebsites.us13.list-manage.com/subscribe/post?u=24b2e89a93987c59ce1ad6472&amp;id=476a42bdda" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate">
                 <div id="mc_embed_signup_scroll">
                     <div class="mc-field-group">
@@ -38,7 +58,6 @@
                 </div>
             </form>
         </div>
-        <!--End mc_embed_signup-->
     </div>
     <footer>featuring MONO - Burial at Sea</footer>
     <audio controls autoplay loop>
