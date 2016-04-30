@@ -1,8 +1,8 @@
 * {
   padding: 0;
   margin: 0;
-  color: #AAA;
-  background-color: black;
+  color: #999;
+  background-color: white;
   font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 100;
   font-size: 1.05em;
@@ -19,6 +19,11 @@ body {
   text-align: center;
 }
 
+input, textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+
 .flex-container {
   display: flex;
   flex-wrap: wrap;
@@ -29,6 +34,7 @@ body {
 }
 
 .logo {
+  color: #666;
   font-size: 4em;
   padding: 20px;
 }
@@ -44,9 +50,14 @@ body {
 
 .responsive-row {
   height: 40px;
-  border: 1px solid #AAA;
+  border: 1px solid #999;
   box-sizing: border-box;
   text-align: center;
+}
+
+.responsive-row:focus, .responsive-row:hover {
+  border-color: #666;
+  color: #666;
 }
 
 .mc-field-group {
@@ -55,4 +66,17 @@ body {
 
 audio {
   margin: auto;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #999;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #999;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #999;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #999;
 }
