@@ -56,7 +56,7 @@ footer {
 
 .logo {
   color: #666;
-  padding: 40px;
+  padding: 20px;
   text-align: center;
 }
 
@@ -68,13 +68,14 @@ footer {
 .logo-text {
   font-size: 2.6em;
   font-variant: small-caps;
+  display: block;
 }
 
 .logo-super {
-  position: fixed;
+  position: relative;
+  left: 6.2em;
+  top: -2.4em;
   font-size: 1.3em;
-  padding: 2px;
-  transform: translateX(0.3em) translateY(-0.1em);
   color: #BBB;
 }
 
