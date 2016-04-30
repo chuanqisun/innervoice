@@ -88,6 +88,10 @@ footer {
   color: #666;
 }
 
+#mc_embed_signup {
+  text-align: center;
+}
+
 .mc-field-group {
   margin-bottom: 20px;
 }
