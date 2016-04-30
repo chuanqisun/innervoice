@@ -37,7 +37,13 @@ input {
 }
 
 footer {
+  width: 100%;
   text-align: center;
+  position: static;
+}
+
+.feature-prompt {
+  margin-bottom: 5px;
 }
 
 .router > .dynamic-route {
@@ -64,6 +70,7 @@ footer {
   align-content: center;
   padding: 15px;
   height: 100%;
+  min-height: 300px;
 }
 
 .logo {
@@ -117,10 +124,6 @@ footer {
 
 .mc-field-group {
   margin-bottom: 20px;
-}
-
-audio {
-  margin: 10px auto 0px auto;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
