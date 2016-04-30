@@ -56,7 +56,8 @@ footer {
   text-align: center;
 }
 
-.logo-icon {
+.logo-icon::before {
+  content: '\01F3A7';
   font-size: 4em;
 }
 
