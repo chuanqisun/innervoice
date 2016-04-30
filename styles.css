@@ -60,6 +60,7 @@ footer {
   content: '\01F3A7';
   font-size: 4em;
   text-decoration: none;
+  font-family:dingbats;
 }
 
 .logo-text {
