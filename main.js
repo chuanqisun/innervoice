@@ -25,48 +25,48 @@ init = function() {
 
         playlist = playlists[0];
         tracks = playlist.tracks;
-    });
 
-    // Attach audio source
-    currentTrack = 0;
-    player = $("<audio></audio>").attr({
-        'src':tracks[currentTrack].path,
-        'volume':0.5,
-    }).appendTo("footer")[0];
+        // Attach audio source
+        currentTrack = 0;
+        player = $("<audio></audio>").attr({
+            'src':tracks[currentTrack].path,
+            'volume':0.5,
+        }).appendTo("footer")[0];
 
-    // Render title, volume, intro, tracks
-    $('.title').text(playlist.title);
-    $('.volume').text('vol. ' + playlist.volume);
-    $('.intro').text(playlist.intro);
-    displayedPlaylist = $('ol.playlist');
-    $.each(tracks, function(i)
-    {
-        var li = $('<li/>').text(tracks[i].name).appendTo(displayedPlaylist);
-        li.click(function(e){
-            e.preventDefault();
-            playTrack(i, tracks, displayedPlaylist, player);
+        // Render title, volume, intro, tracks
+        $('.title').text(playlist.title);
+        $('.volume').text('vol. ' + playlist.volume);
+        $('.intro').text(playlist.intro);
+        displayedPlaylist = $('ol.playlist');
+        $.each(tracks, function(i)
+        {
+            var li = $('<li/>').text(tracks[i].name).appendTo(displayedPlaylist);
+            li.click(function(e){
+                e.preventDefault();
+                playTrack(i, tracks, displayedPlaylist, player);
+            });
         });
-    });
 
-    // Autoplay next track
-    player.addEventListener('ended',function(e){
-        currentTrack = (currentTrack + 1) % tracks.length;   
+        // Autoplay next track
+        player.addEventListener('ended',function(e){
+            currentTrack = (currentTrack + 1) % tracks.length;   
+            playTrack(currentTrack, tracks, displayedPlaylist, player);
+        });
+
+        // Attach play/pause to icon
+        $('.play-icon').click(function() {
+            if (!player.paused) {
+                player.pause();
+                $('.play-icon').addClass('paused');
+            } else {
+                player.play();
+                $('.play-icon').removeClass('paused');
+            }
+        });
+
+        // Start playing
         playTrack(currentTrack, tracks, displayedPlaylist, player);
     });
-
-    // Attach play/pause to icon
-    $('.play-icon').click(function() {
-        if (!player.paused) {
-            player.pause();
-            $('.play-icon').addClass('paused');
-        } else {
-            player.play();
-            $('.play-icon').removeClass('paused');
-        }
-    });
-
-    // Start playing
-    playTrack(currentTrack, tracks, displayedPlaylist, player);
 }
 
 function playTrack(trackNumber, tracks, displayedPlaylist, player){
