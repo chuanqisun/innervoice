@@ -7,8 +7,7 @@ init = function() {
     var currentTrack = 0;
 
     // Get playlist data
-    $.getJSON("playlist.json", function(json) {
-        playlists = JSON.parse(json);
+    $.getJSON("playlist.json", function(playlists) {
         // playlists = [{
         //     "volume": "1",
         //     "title": "Norther Tales",
