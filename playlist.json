@@ -1,8 +1,8 @@
 [{
     "volume": "1",
-    "title": "Norther Tales",
+    "title": "Northern Whispers",
     "dates": "2016.May.4",
-    "intro": "And yet the Evening listens. He who saddens At thought of idleness cannot be idle And he’s awake who thinks himself asleep.",
+    "intro": "Softly they whisper, so as not to be found by the ancient sorrows.",
     "tracks": [
         {"name":"Radical Face - Gray Skies", "path":"./audio/001/01-Gray_Skies.mp3", "length":"00:43"},
         {"name":"Carved In Stone - Die Gärten der Feen", "path":"./audio/001/02-Die_Gaerten_Der_Feen.mp3", "length":"03:03"},

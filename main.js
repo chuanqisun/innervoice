@@ -6,21 +6,27 @@ init = function() {
     var player;
     var currentTrack = 0;
 
+    // LOCAL DEBUG ONLY
+    // $.getJSON = function(str, callback) {
+    //     callback();
+    // }
+
     // Get playlist data
     $.getJSON("playlist.json", function(playlists) {
-        // playlists = [{
-        //     "volume": "1",
-        //     "title": "Norther Tales",
-        //     "intro": "And yet the Evening listens. He who saddens At thought of idleness cannot be idle And he’s awake who thinks himself asleep.",
-        //     "dates": "2016.May.4",
-        //     "tracks": [
-        //         {"name":"Radical Face - Gray Skies", "path":"./audio/001/01-Gray_Skies.mp3", "length":"00:43"},
-        //         {"name":"Carved In Stone - Die Gärten der Feen", "path":"./audio/001/02-Die_Gaerten_Der_Feen.mp3", "length":"03:03"},
-        //         {"name":"Adaro - Es Ist Ein Schnee Gefallen", "path":"./audio/001/03-Es_ist_ein_Schnee_gefallen.mp3", "length":"03:59"},
-        //         {"name":"Agnes Obel - Riverside", "path":"./audio/001/04-Riverside.mp3", "length":"03:51"},
-        //         {"name":"Mono - Burial At Sea", "path":"./audio/001/05-Burial_at_the_sea.mp3", "length":"10:40"}
-        //     ]
-        // }];
+        playlists = 
+        [{
+            "volume": "1",
+            "title": "Northern Whispers",
+            "dates": "2016.May.4",
+            "intro": "Softly they whisper, so as not to be found by the ancient sorrows.",
+            "tracks": [
+                {"name":"Radical Face - Gray Skies", "path":"./audio/001/01-Gray_Skies.mp3", "length":"00:43"},
+                {"name":"Carved In Stone - Die Gärten der Feen", "path":"./audio/001/02-Die_Gaerten_Der_Feen.mp3", "length":"03:03"},
+                {"name":"Adaro - Es Ist Ein Schnee Gefallen", "path":"./audio/001/03-Es_ist_ein_Schnee_gefallen.mp3", "length":"03:59"},
+                {"name":"Agnes Obel - Riverside", "path":"./audio/001/04-Riverside.mp3", "length":"03:51"},
+                {"name":"Mono - Burial At Sea", "path":"./audio/001/05-Burial_at_the_sea.mp3", "length":"10:40"}
+            ]
+        }];
 
         playlist = playlists[0];
         tracks = playlist.tracks;
@@ -29,7 +35,7 @@ init = function() {
         currentTrack = 0;
         player = $("<audio></audio>").attr({
             'src':tracks[currentTrack].path,
-            'volume':0.5,
+            'volume':1,
         }).appendTo("footer")[0];
 
         // Render title, volume, intro, tracks
