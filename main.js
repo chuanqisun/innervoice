@@ -7,7 +7,7 @@ init = function() {
     var currentTrack = 0;
 
     // Get playlist data
-    $.getJSON("playlist.json", function(json) {
+    $.getJSON("playlist.json&callback=?", function(json) {
         playlists = JSON.parse(json);
         // playlists = [{
         //     "volume": "1",
