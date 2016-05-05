@@ -7,14 +7,26 @@
   padding: 0;
   margin: 0;
   color: #999;
-  background-color: white;
   font-family: 'Lato', sans-serif;
   font-size: 14px;
   font-weight: 300;
+  cursor: default;
 }
 
 *:focus {
     outline: none;
+}
+
+a {
+  cursor: pointer;
+}
+
+input[type=email] {
+  cursor: text;
+}
+
+input[type=submit] {
+  cursor: pointer;
 }
 
 body {
@@ -27,6 +39,10 @@ h1 {
   font-size: 1.4em;
 }
 
+h2 {
+  font-size: 1.2em;
+}
+
 p {
   font-size: 1.1em;
 }
@@ -34,9 +50,10 @@ p {
 input {
   -webkit-appearance: none;
   -webkit-border-radius: 0;
+  background-color: white;
 }
 
-footer {
+header, footer {
   width: 100%;
   text-align: center;
   position: static;
@@ -140,14 +157,101 @@ footer {
 }
 
 /* play mode */
+.logo-as-banner {
+  font-size: 0.8em;
+  color: #666;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.logo-as-banner .logo-super {
+  position: relative;
+  top: -10px;
+}
+
+.logo-as-banner .logo-text {
+  margin-left: 15px;
+}
+
+.flex-container.short {
+  min-height: 150px;
+}
+
+.main-content {
+  text-align: center;
+  max-width: 320px;
+}
+
+.title-volume-container {
+  margin-bottom: 20px;
+}
+
+.main-content .volume {
+  display: inline;
+  color: #BBB;
+}
+
+
+.main-content .title {
+  display: inline;
+  font-size: 1.5em;
+}
+
+.main-content .intro {
+  font-size: 1.2em;
+  line-height: 1.5em;
+  text-align: justify;
+
+}
+
+.playlist {
+  list-style-type: none;
+}
+
+.playlist .playing {
+  font-weight: bold;
+}
+
+.playlist li {
+  cursor: pointer;
+  font-size: 1.2em
+}
+
+.playlist li:hover {
+  font-weight: bold;
+  color: #666;
+}
+
+
+.playlist li+li{
+  margin-top: 10px;
+}
+
+.nav-container {
+  margin-top: 20px;
+}
+
+.nav-container a {
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
 .play-icon {
   font-family: Iconset;
   font-size: 40px;
   -webkit-animation: spin 5s infinite linear;
   animation: spin 5s infinite linear;
   display: inline-block;
-  padding: 5px;
-  background: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.play-icon.paused {
+  -webkit-animation-play-state: paused; /* Chrome, Safari, Opera */
+  animation-play-state: paused;
 }
 
 @keyframes spin {
@@ -161,6 +265,16 @@ footer {
   }
 }
 
-.playlist {
-  list-style-type: none;
+.next::after {
+  content: "[>]"
+}
+.next:hover::after {
+  content: "[ > ]"
+}
+
+.prev::after {
+  content: "[<]"
+}
+.prev:hover::after {
+  content: "[ < ]"
 }
