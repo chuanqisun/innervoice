@@ -8,6 +8,6 @@
         {"name":"Carved In Stone - Die Gärten der Feen", "path":"./audio/001/02-Die_Gaerten_Der_Feen.mp3", "length":"03:03"},
         {"name":"Adaro - Es Ist Ein Schnee Gefallen", "path":"./audio/001/03-Es_ist_ein_Schnee_gefallen.mp3", "length":"03:59"},
         {"name":"Agnes Obel - Riverside", "path":"./audio/001/04-Riverside.mp3", "length":"03:51"},
-        {"name":"Mono - Burial At Sea", "path":"./audio/001/05-Burial_at_the_sea.mp3", "length":"10:40"},
+        {"name":"Mono - Burial At Sea", "path":"./audio/001/05-Burial_at_the_sea.mp3", "length":"10:40"}
     ]
 }]
