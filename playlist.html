@@ -12,6 +12,8 @@
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <script src="https://code.jquery.com/jquery-2.2.3.min.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="main.js" defer></script>
 </head>
 
 <body>
@@ -36,32 +38,22 @@
         <span class="logo-icon">&#xe904;</span><br/>
         <span class="logo-text">Inner Voice</span><sup class="logo-super">BETA</sup>
         <h1>IV#1 Northern Tales</h1>
-        <div>
-          <p>[06:12] Endless Melancholy - You Are The Moonlight</p>
-          <p>[00:43] Radical Face - Gray Skies</p>
-          <p>[03:03] Carved In Stone - Die Gärten der Feen</p>
-          <p>[03:35] Mono - Follow The Map</p>
-          <p>[03:59] Adaro - Es Ist Ein Schnee Gefallen</p>
-          <p>[03:51] Agnes Obel - Riverside</p>
-        </div>
+        <ol class="playlist">
+          <li>[06:12] Endless Melancholy - You Are The Moonlight</li>
+          <li>[00:43] Radical Face - Gray Skies</li>
+          <li>[03:03] Carved In Stone - Die Gärten der Feen</li>
+          <li>[03:35] Mono - Follow The Map</li>
+          <li>[03:59] Adaro - Es Ist Ein Schnee Gefallen</li>
+          <li>[03:51] Agnes Obel - Riverside</li>
+        </ol>
         <div>
           <span><a href="#intro">back</a> <a href="#music">play</a></span>
         </div>
       </div>
-
-
-      <!-- spotify -->
-      <div id="play-spotify" class="dynamic-route iframe-container">
-        <div class="iframe-actions"><a href="#tracks">back</a></div>
-        <iframe src="https://embed.spotify.com/?uri=spotify%3Auser%3A12177003074%3Aplaylist%3A3IFynIBW0ii5uRjJ5ckovD&theme=white" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-      </div>
-
-      <!-- youtube -->
-      <div id="play" class="dynamic-route iframe-container dark-theme">
-          <div class="iframe-actions"><a href="#tracks">back</a></div>
-          <iframe src="https://www.youtube.com/embed/videoseries?list=PLjIccWYHVorlqxMZ3dbtqvHDlAwU1FfbH&autoplay=1" frameborder="0"></iframe>
-      </div>
     </div>
-    <footer></footer>
+    <footer>
+      <audio src="./audio/001/01-Gray_Skies.mp3" loop></audio>
+      <span class="play-icon">&#xe900;</span>
+    </footer>
 </body>
 </html>
