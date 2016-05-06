@@ -7,9 +7,9 @@ init = function() {
     var currentTrack = 0;
 
     // LOCAL DEBUG ONLY
-    // $.getJSON = function(str, callback) {
-    //     callback();
-    // }
+    $.getJSON = function(str, callback) {
+        callback();
+    }
 
     // Get playlist data
     $.getJSON("playlist.json", function(playlists) {
