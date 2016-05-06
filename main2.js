@@ -1,4 +1,5 @@
 var platformDetector = {
+    hasTouch: function() { return "ontouchstart" in document.documentElement; },
     isMobile: function() {
         return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
     }
@@ -24,9 +25,9 @@ var audioPlayer = {
 
     init: function() {
         // LOCAL DEBUG ONLY
-        // $.getJSON = function(str, callback) {
-        //     callback();
-        // }
+        $.getJSON = function(str, callback) {
+            callback();
+        }
 
         // Get playlist data
         _this = this;
@@ -69,6 +70,9 @@ var audioPlayer = {
                     e.preventDefault();
                     _this.playTrack(i, _this.tracks, _this.displayedPlaylist, _this.player);
                 });
+
+                if (platformDetector.hasTouch())
+                    li.addClass('no-hover');
             });
 
             // Autoplay next track
