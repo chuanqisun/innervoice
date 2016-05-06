@@ -36,6 +36,7 @@
 html,
 body {
     height: 100%;
+    width: 100%;
     margin: 0;
 }
 
@@ -43,12 +44,12 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    min-height: 100%; /* windows phone has issue with vh, must specify height and weight as 100% */
-    min-width: 100%;
 }
 
 .flex-layout-container .flex-layout-main {
     flex: 1;
+    height: 100%;
+    width: 100%;
 }
 
 
