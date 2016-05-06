@@ -78,11 +78,11 @@ var audioPlayer = {
             // });
 
             // On play
-            _this.player.addEventListener('play',function(e){
-                var displayedTrack = _this.displayedPlaylist.find('li').eq(_this.currentTrack);
-                displayedTrack.addClass('playing').siblings().removeClass('playing');
-                $('.audio-control').removeClass('paused');
-            });
+            // _this.player.addEventListener('play',function(e){
+            //     var displayedTrack = _this.displayedPlaylist.find('li').eq(_this.currentTrack);
+            //     displayedTrack.addClass('playing').siblings().removeClass('playing');
+            //     $('.audio-control').removeClass('paused');
+            // });
 
             // On pause
             // _this.player.addEventListener('pause',function(e){
