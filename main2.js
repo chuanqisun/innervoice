@@ -7,11 +7,14 @@ var audioPlayer = {
     currentTrack: undefined,
 
     playTrack: function(trackNumber, tracks, displayedPlaylist, player){
-        $('.audio-control').removeClass('paused').removeClass('hidden');
+        if(_this.currentTrack !== trackNumber) {
+            player.src = tracks[trackNumber].path;
+            player.load();
+            _this.currentTrack = trackNumber;
+        }
+        $('.audio-control').removeClass('paused');
         displayedTrack = displayedPlaylist.find('li').eq(trackNumber);
         displayedTrack.addClass('playing').siblings().removeClass('playing');
-        player.src = tracks[trackNumber].path;
-        player.load();
         player.play();
     },
 
@@ -65,8 +68,8 @@ var audioPlayer = {
 
             // Autoplay next track
             _this.player.addEventListener('ended',function(e){
-                _this.currentTrack = (_this.currentTrack + 1) % _this.tracks.length;   
-                _this.playTrack(_this.currentTrack, _this.tracks, _this.displayedPlaylist, _this.player);
+                var nextTrackNumber = (_this.currentTrack + 1) % _this.tracks.length;   
+                _this.playTrack(nextTrackNumber, _this.tracks, _this.displayedPlaylist, _this.player);
             });
 
             // Start playing when first visit tracks page

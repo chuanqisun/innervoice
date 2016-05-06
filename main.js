@@ -58,6 +58,14 @@ init = function() {
             playTrack(currentTrack, tracks, displayedPlaylist, player);
         });
 
+        // Start playing when first visit tracks page
+        var onHashChange = function() {
+            if (location.hash === '#tracks' && player.paused)
+                playTrack(currentTrack, tracks, displayedPlaylist, player);
+            $(window).off('hashchange', undefined, onHashChange);
+        }
+        $(window).on('hashchange', undefined, onHashChange);
+
         // Attach play/pause to icon
         $('.play-icon').click(function() {
             if (!player.paused) {
