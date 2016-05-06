@@ -245,27 +245,15 @@ header, footer {
 }
 
 .play-icon {
-  width: 40px;
-  height: 40px;
-
   font-family: Iconset;
   font-size: 40px;
   -webkit-animation: spin 5s infinite linear;
   animation: spin 5s infinite linear;
   display: inline-block;
-  padding: 10px;
   cursor: pointer;
-
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  outline: 0 none;
 }
 
-.play-icon::selection 
-{
+.play-icon::selection {
     background-color:transparent;
 }
 
@@ -301,4 +289,8 @@ header, footer {
 }
 .prev:hover::after {
   content: "[ < ]"
+}
+
+.footer-content-container {
+  padding-bottom: 10px;
 }

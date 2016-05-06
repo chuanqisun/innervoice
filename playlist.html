@@ -24,6 +24,14 @@
       </div>
     </header>
     <div class="flex-container short router">
+      <!-- track -->
+      <div id="tracks" class="flex-item row main-content dynamic-route">
+        <ol class="playlist"></ol>
+        <div class="nav-container">
+          <span><a href="#intro" class="prev"></a></span>
+        </div>
+      </div>
+
       <!-- intro -->
       <div id="intro" class="flex-item row main-content dynamic-route">
         <div class="title-volume-container">
@@ -35,17 +43,11 @@
           <span><a href="#tracks" class="next"></a></span>
         </div>
       </div>
-
-      <!-- track -->
-      <div id="tracks" class="flex-item row main-content dynamic-route">
-        <ol class="playlist"></ol>
-        <div class="nav-container">
-          <span><a href="#intro" class="prev"></a></span>
-        </div>
-      </div>
     </div>
     <footer>
-      <span class="play-icon">&#xe900;</span>
+      <div class="footer-content-container">
+        <span class="play-icon">&#xe900;</span>
+      </div>
     </footer>
 </body>
 </html>
