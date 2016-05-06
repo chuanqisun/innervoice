@@ -75,7 +75,7 @@ var audioPlayer = {
             // Start playing when first visit tracks page
             var onHashChange = function() {
                 if (location.hash === '#tracks' && _this.player.paused)
-                    _this.playTrack(_this.currentTrack, _this.tracks, _this.displayedPlaylist, _this.player);
+                    window.setTimeout(function() { _this.playTrack(_this.currentTrack, _this.tracks, _this.displayedPlaylist, _this.player);}, 3000);                    
                 $(window).off('hashchange', undefined, onHashChange);
             }
             $(window).on('hashchange', undefined, onHashChange);
