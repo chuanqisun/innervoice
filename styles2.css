@@ -94,6 +94,8 @@ body {
 .tracks-container .tracks {
   list-style-type: none;
   padding: 0;
+  margin-top: 0px;
+  margin-bottom: 16px;
 }
 
 .tracks-container .tracks .playing {
