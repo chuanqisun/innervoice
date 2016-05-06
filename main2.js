@@ -1,3 +1,9 @@
+var platformDetector = {
+    isMobile: function() {
+        return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+    }
+}
+
 var audioPlayer = {
     // scope var
     playlist: undefined,
@@ -12,17 +18,15 @@ var audioPlayer = {
             player.load();
             _this.currentTrack = trackNumber;
         }
-        $('.audio-control').removeClass('paused');
-        displayedTrack = displayedPlaylist.find('li').eq(trackNumber);
-        displayedTrack.addClass('playing').siblings().removeClass('playing');
+
         player.play();
     },
 
     init: function() {
         // LOCAL DEBUG ONLY
-        $.getJSON = function(str, callback) {
-            callback();
-        }
+        // $.getJSON = function(str, callback) {
+        //     callback();
+        // }
 
         // Get playlist data
         _this = this;
@@ -50,6 +54,7 @@ var audioPlayer = {
             _this.player = $("<audio></audio>").attr({
                 'src':_this.tracks[_this.currentTrack].path,
                 'volume':1,
+                'controls':platformDetector.isMobile(),
             }).appendTo("footer")[0];
 
             // Render title, volume, intro, tracks
@@ -72,24 +77,39 @@ var audioPlayer = {
                 _this.playTrack(nextTrackNumber, _this.tracks, _this.displayedPlaylist, _this.player);
             });
 
+            // On play
+            _this.player.addEventListener('play',function(e){
+                var displayedTrack = _this.displayedPlaylist.find('li').eq(_this.currentTrack);
+                displayedTrack.addClass('playing').siblings().removeClass('playing');
+                $('.audio-control').removeClass('paused');
+            });
+
+            // On pause
+            _this.player.addEventListener('pause',function(e){
+                $('.audio-control').addClass('paused');
+            });
+
             // Start playing when first visit tracks page
             var onHashChange = function() {
                 if (location.hash === '#tracks' && _this.player.paused)
-                    window.setTimeout(function() { _this.playTrack(_this.currentTrack, _this.tracks, _this.displayedPlaylist, _this.player);}, 3000);                    
+                    _this.playTrack(_this.currentTrack, _this.tracks, _this.displayedPlaylist, _this.player);
                 $(window).off('hashchange', undefined, onHashChange);
             }
             $(window).on('hashchange', undefined, onHashChange);
 
-            // Attach play/pause to icon
-            $('.audio-control').click(function() {
-                if (!_this.player.paused) {
-                    _this.player.pause();
-                    $('.audio-control').addClass('paused');
-                } else {
-                    _this.playTrack(_this.currentTrack, _this.tracks, _this.displayedPlaylist, _this.player);
-                    $('.audio-control').removeClass('paused');
-                }
-            });
+            // Use animate icon only on desktop clients
+            if (platformDetector.isMobile()) {
+                $('.audio-control-container').remove();
+            } else {
+                // Attach play/pause to icon
+                $('.audio-control').click(function() {
+                    if (!_this.player.paused) {
+                        _this.player.pause();
+                    } else {
+                        _this.playTrack(_this.currentTrack, _this.tracks, _this.displayedPlaylist, _this.player);
+                    }
+                });
+            }
         })
     }
 }
