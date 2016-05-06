@@ -16,7 +16,7 @@ init = function() {
         playlists = 
         [{
             "volume": "1",
-            "title": "Northern Whispers",
+            "title": "The Northern Whispers",
             "dates": "2016.May.4",
             "intro": "Softly they whisper, so as not to be found by the ancient sorrows.",
             "tracks": [
@@ -45,7 +45,7 @@ init = function() {
         displayedPlaylist = $('ol.tracks');
         $.each(tracks, function(i)
         {
-            var li = $('<li/>').text(tracks[i].name).attr('artist', tracks[i].artist).appendTo(displayedPlaylist);
+            var li = $('<li/>').text(tracks[i].artist + ' · ' + tracks[i].name).appendTo(displayedPlaylist);
             li.click(function(e){
                 e.preventDefault();
                 playTrack(i, tracks, displayedPlaylist, player);

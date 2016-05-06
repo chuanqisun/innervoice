@@ -50,6 +50,11 @@ body {
 }
 
 
+/* ========== Global Interactions ========== */
+* {
+    cursor: default;
+}
+
 /* ========== Reusable Layout ========== */
 .flex-content-container {
     display: flex;
@@ -86,7 +91,7 @@ body {
 }
 
 .tracks-container .tracks .playing {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .tracks-container .tracks li {
@@ -95,12 +100,8 @@ body {
 }
 
 .tracks-container .tracks li:hover {
-  font-weight: bold;
+  font-weight: 700;
   color: #666;
-}
-
-.tracks-container .tracks li:hover::before, .tracks li.playing::before {
-  content: attr(artist) " · "
 }
 
 .tracks-container .tracks li+li{
@@ -134,11 +135,12 @@ body {
 .nav-container a {
   text-decoration: none;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .nav-container a:hover {
   color: #666;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .nav-container .next::after {
