@@ -225,6 +225,9 @@ header, footer {
   color: #666;
 }
 
+.playlist li:hover::before, .playlist li.playing::before {
+  content: attr(artist) " · "
+}
 
 .playlist li+li{
   margin-top: 10px;
