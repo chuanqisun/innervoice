@@ -54,6 +54,7 @@ input {
 }
 
 header, footer {
+  display: block;
   width: 100%;
   text-align: center;
   position: static;
