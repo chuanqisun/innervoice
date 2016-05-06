@@ -71,8 +71,8 @@ var audioPlayer = {
                     _this.playTrack(i, _this.tracks, _this.displayedPlaylist, _this.player);
                 });
 
-                if (platformDetector.hasTouch())
-                    li.addClass('no-hover');
+                if (!platformDetector.hasTouch())
+                    li.addClass('no-touch');
             });
 
             // Autoplay next track

@@ -99,7 +99,7 @@ body {
   font-size: 16px;
 }
 
-.tracks-container .tracks li:not(.no-hover):hover {
+.tracks-container .tracks li.no-touch:hover {
   font-weight: 700;
   color: #666;
 }
