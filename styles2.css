@@ -100,7 +100,7 @@ body {
 }
 
 .tracks-container .tracks li:hover {
-  font-weight: 700;
+  // font-weight: 700;
   color: #666;
 }
 

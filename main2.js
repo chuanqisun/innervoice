@@ -72,22 +72,22 @@ var audioPlayer = {
             });
 
             // Autoplay next track
-            // _this.player.addEventListener('ended',function(e){
-            //     var nextTrackNumber = (_this.currentTrack + 1) % _this.tracks.length;   
-            //     _this.playTrack(nextTrackNumber, _this.tracks, _this.displayedPlaylist, _this.player);
-            // });
+            _this.player.addEventListener('ended',function(e){
+                var nextTrackNumber = (_this.currentTrack + 1) % _this.tracks.length;   
+                _this.playTrack(nextTrackNumber, _this.tracks, _this.displayedPlaylist, _this.player);
+            });
 
             // On play
-            // _this.player.addEventListener('play',function(e){
-            //     var displayedTrack = _this.displayedPlaylist.find('li').eq(_this.currentTrack);
-            //     displayedTrack.addClass('playing').siblings().removeClass('playing');
-            //     $('.audio-control').removeClass('paused');
-            // });
+            _this.player.addEventListener('play',function(e){
+                var displayedTrack = _this.displayedPlaylist.find('li').eq(_this.currentTrack);
+                displayedTrack.addClass('playing').siblings().removeClass('playing');
+                $('.audio-control').removeClass('paused');
+            });
 
             // On pause
-            // _this.player.addEventListener('pause',function(e){
-            //     $('.audio-control').addClass('paused');
-            // });
+            _this.player.addEventListener('pause',function(e){
+                $('.audio-control').addClass('paused');
+            });
 
             // Use animate icon and auto start only on desktop clients
             if (platformDetector.isMobile()) {
