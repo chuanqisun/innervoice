@@ -89,15 +89,7 @@ var audioPlayer = {
                 $('.audio-control').addClass('paused');
             });
 
-            // Start playing when first visit tracks page
-            var onHashChange = function() {
-                if (location.hash === '#tracks' && _this.player.paused)
-                    _this.playTrack(_this.currentTrack, _this.tracks, _this.displayedPlaylist, _this.player);
-                $(window).off('hashchange', undefined, onHashChange);
-            }
-            $(window).on('hashchange', undefined, onHashChange);
-
-            // Use animate icon only on desktop clients
+            // Use animate icon and auto start only on desktop clients
             if (platformDetector.isMobile()) {
                 $('.audio-control-container').remove();
             } else {
@@ -109,6 +101,9 @@ var audioPlayer = {
                         _this.playTrack(_this.currentTrack, _this.tracks, _this.displayedPlaylist, _this.player);
                     }
                 });
+
+                // Start playing when first visit tracks page
+                _this.playTrack(_this.currentTrack, _this.tracks, _this.displayedPlaylist, _this.player);
             }
         })
     }
