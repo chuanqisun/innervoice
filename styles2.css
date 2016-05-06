@@ -171,10 +171,6 @@ body {
   cursor: pointer;
 }
 
-.audio-control-container .audio-control.hidden {
-    display: none;
-}
-
 .audio-control-container .audio-control:hover {
     color: #666;
 }
