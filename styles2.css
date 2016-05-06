@@ -43,9 +43,11 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    height: 100%;
 }
 
 .flex-layout-container .flex-layout-main {
+    height: 100%;
     flex: 1;
 }
 
