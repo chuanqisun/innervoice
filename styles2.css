@@ -163,7 +163,7 @@ body {
     padding: 10px;
 }
 
-.audio-control {
+.audio-control-container .audio-control {
   font-size: 40px;
   -webkit-animation: spin 5s infinite linear;
   animation: spin 5s infinite linear;
@@ -171,11 +171,15 @@ body {
   cursor: pointer;
 }
 
-.audio-control:hover {
+.audio-control-container .audio-control.hidden {
+    display: none;
+}
+
+.audio-control-container .audio-control:hover {
     color: #666;
 }
 
-.audio-control.paused {
+.audio-control-container .audio-control.paused {
   -webkit-animation-play-state: paused; /* Chrome, Safari, Opera */
   animation-play-state: paused;
 }

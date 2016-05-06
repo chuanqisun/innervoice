@@ -75,7 +75,7 @@ init = function() {
 }
 
 function playTrack(trackNumber, tracks, displayedPlaylist, player){
-    $('.audio-control').removeClass('paused');
+    $('.audio-control').removeClass('paused').removeClass('hidden');
     displayedTrack = displayedPlaylist.find('li').eq(trackNumber);
     displayedTrack.addClass('playing').siblings().removeClass('playing');
     player.src = tracks[trackNumber].path;
