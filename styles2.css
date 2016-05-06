@@ -36,6 +36,7 @@
 html,
 body {
     height: 100%;
+    width: 100%;
     margin: 0;
 }
 
@@ -46,10 +47,12 @@ body {
     /* min-height: 100vh; */
     min-height: 320px;
     height: 100%;    
+    width: 100%;
 }
 
 .flex-layout-container .flex-layout-main {
     flex: 1;
+    width: 100%;
 }
 
 
@@ -118,8 +121,6 @@ body {
     text-align: center;
     padding-left: 10px;
     padding-right: 10px;
-    min-width: 320px;
-    width: auto;
 }
 
 .intro-container .volume {
