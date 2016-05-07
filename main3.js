@@ -90,13 +90,13 @@ IV.Service = (function() {
 
 // ==================== Router ====================
 IV.Router = (function() {
-    var oneTimeTogglePlayFunc; 
+    var oneTimeAutoPlayFunc; 
     var oneTimeShowAudioControlFunc;
     var oneTimeRevealHeadphoneNavControlFunc;
     var oneTimeRevealIntroNavControlFunc;
 
     function init() {
-        oneTimeTogglePlayFunc = _.once(IV.Controller.togglePlay);
+        oneTimeAutoPlayFunc = _.once(IV.Controller.playTrackByTrackNumber);
         oneTimeShowAudioControlFunc = _.once(IV.View.showAudioControl);
         oneTimeRevealHeadphoneNavControlFunc = _.once(IV.View.revealHeadphoneNavControl);
         oneTimeRevealIntroNavControlFunc = _.once(IV.View.revealIntroNavControl);
@@ -122,7 +122,7 @@ IV.Router = (function() {
 
     function onEnterTracksView() {
         oneTimeShowAudioControlFunc();
-        oneTimeTogglePlayFunc();
+        oneTimeAutoPlayFunc(IV.Model.currentTrackNumber, true);
     }
 
     function onEnterIntroView() {
@@ -322,8 +322,8 @@ IV.Controller = (function() {
         });
     }
 
-    function playTrackByTrackNumber(trackNumber) {
-        if(IV.Model.currentTrackNumber !== trackNumber) {
+    function playTrackByTrackNumber(trackNumber, reload) {
+        if(IV.Model.currentTrackNumber !== trackNumber || reload) {
             IV.Model.setCurrentTrack(trackNumber);
             audioPlayer.src = IV.Model.currentTrack.path;
             audioPlayer.load();
