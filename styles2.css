@@ -42,14 +42,15 @@ body {
 .flex-layout-container {
     display: flex;
     flex-direction: column;
-    /* TODO: once Windows Phone support vh, the following line should be enough */
-    /* min-height: 100vh; */
-    min-height: 320px;
-    height: 100%;    
+    height: 100vh;
 }
 
 .flex-layout-container .flex-layout-main {
-    flex: 1;
+    flex: 1 0 auto;
+}
+
+header, footer {
+  flex-shrink: 0;
 }
 
 
@@ -61,7 +62,6 @@ body {
 /* ========== Reusable Layout ========== */
 .flex-content-container {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
