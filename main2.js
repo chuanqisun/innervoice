@@ -55,6 +55,7 @@ var audioPlayer = {
             _this.player = $("<audio></audio>").attr({
                 'src':_this.tracks[_this.currentTrack].path,
                 'volume':1,
+                'preload': 'none'
             }).appendTo("footer")[0];
 
             // Render title, volume, intro, tracks
