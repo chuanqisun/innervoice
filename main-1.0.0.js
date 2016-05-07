@@ -61,7 +61,7 @@ IV.Service = (function() {
                     "volume": "1",
                     "title": "The Ancient Sorrow",
                     "dates": "1462651292",
-                    "intro": "Softly they whispered into darkness, but The Ancient Sorrow echoed with a beam of light.",
+                    "intro": "Softly they whispered into darkness, but the Ancient Sorrow echoed with a beam of light.",
                     "tracks": [
                         {"artist":"Radical Face", "name":"Gray Skies", "filename":"Gray_Skies.mp3", "length":"00:43"},
                         {"artist":"Carved In Stone", "name":"Die Gärten der Feen", "filename":"Die_Gaerten_Der_Feen.mp3", "length":"03:03"},
