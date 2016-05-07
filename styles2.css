@@ -50,12 +50,16 @@ body {
 }
 
 header, footer {
-  flex-shrink: 0;
+    flex-shrink: 0;
 }
 
 /* ========== Global Interactions ========== */
 * {
     cursor: default;
+}
+
+.hide {
+    display: none !important;
 }
 
 /* ========== Reusable Layout ========== */
@@ -85,31 +89,32 @@ header, footer {
 /* ========== Component Internal - Tracks ========== */
 .tracks-container {
     text-align: center;
+    padding: 15px;
 }
 
 .tracks-container .tracks {
-  list-style-type: none;
-  padding: 0;
-  margin-top: 0px;
-  margin-bottom: 16px;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0px;
+    margin-bottom: 16px;
 }
 
 .tracks-container .tracks .playing {
-  font-weight: 700;
+    font-weight: 700;
 }
 
 .tracks-container .tracks li {
-  cursor: pointer;
-  font-size: 16px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 .tracks-container .tracks li.no-touch:hover {
-  font-weight: 700;
-  color: #666;
+    font-weight: 700;
+    color: #666;
 }
 
 .tracks-container .tracks li+li{
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 /* ========== Component Internal - Intro ========== */
@@ -134,31 +139,51 @@ header, footer {
     font-size: 16px;
 }
 
+/* ========== Component Internal - Headphone ========== */
+.headphone-container {
+    text-align: center;
+    padding: 15px;
+}
+
+.headphone-container .headphone-icon-text-container {
+    margin-bottom: 16px;
+}
+
+.headphone-container .headphone-icon-text-container .headphone-icon {
+    font-size: 40px;
+}
+
+.headphone-container .headphone-icon-text-container .headphone-text {
+    text-align: left;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
 /* ========== Component Internal - Nav Control ========== */
 .nav-container a {
-  text-decoration: none;
-  font-size: 16px;
-  cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .nav-container a:hover {
-  color: #666;
-  font-weight: 700;
+    color: #666;
+    font-weight: 700;
 }
 
 .nav-container .next::after {
-  content: "[>]"
+    content: "[>]"
 }
 .nav-container .next:hover::after {
-  content: "[ > ]"
+    content: "[ > ]"
 }
 
 .nav-container .prev::after {
-  content: "[<]"
+    content: "[<]"
 }
 
 .nav-container .prev:hover::after {
-  content: "[ < ]"
+    content: "[ < ]"
 }
 
 /* ========== Component Internal - Audio Control ========== */
@@ -167,11 +192,11 @@ header, footer {
 }
 
 .audio-control-container .audio-control {
-  font-size: 40px;
-  -webkit-animation: spin 5s infinite linear;
-  animation: spin 5s infinite linear;
-  display: inline-block;
-  cursor: pointer;
+    font-size: 40px;
+    -webkit-animation: spin 5s infinite linear;
+    animation: spin 5s infinite linear;
+    display: inline-block;
+    cursor: pointer;
 }
 
 .audio-control-container .audio-control:hover {
@@ -179,17 +204,17 @@ header, footer {
 }
 
 .audio-control-container .audio-control.paused {
-  -webkit-animation-play-state: paused; /* Chrome, Safari, Opera */
-  animation-play-state: paused;
+    -webkit-animation-play-state: paused; /* Chrome, Safari, Opera */
+    animation-play-state: paused;
 }
 
 @keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }

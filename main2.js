@@ -23,6 +23,16 @@ var audioPlayer = {
         player.play();
     },
 
+    onHashChange: function() {
+        if (location.hash === '#tracks') {
+            $('.audio-control').removeClass('hide');
+            $(window).off('hashchange', undefined, _this.onHashChange);
+        }
+        // if (_this.player.paused)
+        //     _this.playTrack(_this.currentTrack, _this.tracks, _this.displayedPlaylist, _this.player);
+
+    },
+
     init: function() {
         // LOCAL DEBUG ONLY
         $.getJSON = function(str, callback) {
@@ -93,7 +103,7 @@ var audioPlayer = {
                 $('.audio-control').addClass('paused');
             });
 
-            // Attach play/pause to icon
+            // Handle click on play/pause icon
             $('.audio-control').click(function() {
                 if (!_this.player.paused) {
                     _this.player.pause();
@@ -101,6 +111,10 @@ var audioPlayer = {
                     _this.playTrack(_this.currentTrack, _this.tracks, _this.displayedPlaylist, _this.player);
                 }
             });
+
+            // Show control when first visiting tracks page
+            $(window).on('hashchange', undefined, _this.onHashChange);
+            _this.onHashChange();
 
             if (!platformDetector.isMobile()) {
                 // Auto play only on desktop
