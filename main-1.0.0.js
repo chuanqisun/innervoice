@@ -387,7 +387,5 @@ var config  = {
     playlistFilename: 'playlist.json'
 };
 
-
 // ==================== Bootstrap ====================
 IV.init(config);
-
