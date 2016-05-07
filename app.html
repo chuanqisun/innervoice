@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Inner Voice BETA ♪</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Artistically crafted playlists every once in a while">
+    <meta name="author" content="Chuanqi">
+    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Lato:700,300' media="none" onload="this.media='all';">
+    <link rel='stylesheet' type='text/css' href="playlist.css" media="none" onload="this.media='all';">
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./external/lodash.core.min.js" defer></script>
+    <script type="text/javascript" src="main.js" defer></script>
+</head>
+
+<body>
+    <div class="flex-layout-container">
+        <header class="flex-content-container">
+            <div class="header-logo-container">
+                <span class="header-logo-icon glyphicon">&#xe904;</span>
+                <span class="header-logo-text">Inner Voice</span>
+            </div>
+        </header>
+
+        <main class="flex-layout-main flex-content-container router">
+            <!-- track -->
+            <div id="tracks" class="tracks-container dynamic-route">
+                <ol class="tracks"></ol>
+                <div class="nav-container">
+                    <a href="#intro" class="prev"></a>
+                </div>
+            </div>
+
+            <!-- intro -->
+            <div id="intro" class="intro-container dynamic-route">
+                <h2 class="volume"></h2>
+                <h1 class="title"></h1>
+                <p class="intro"></p>
+                <div class="nav-container">
+                    <a href="#tracks" class="next invisible ease-opacity delay"></a>
+                </div>
+            </div>
+
+            <!-- headphone -->
+            <div id="headphone" class="headphone-container dynamic-route">
+                <div class="headphone-icon-text-container flex-content-container">
+                    <span class="headphone-icon glyphicon">&#xe901;</span>
+                    <span class="headphone-text">Inner Voice sounds better with headphones...</span>
+                </div>
+                <div class="nav-container">
+                    <a href="#intro" class="next invisible ease-opacity"></a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="flex-content-container">
+            <div class="audio-control-container">
+                <span class="glyphicon audio-control paused hide">&#xe900;</span>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
