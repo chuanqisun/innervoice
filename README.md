@@ -3,7 +3,7 @@
 ### v1.0.0
 5/7/2016
 
-Deployed to innervoice.azurewebsites.net
+Deployed to to [Inner Voice BETA](innervoice.azurewebsites.net)
 
 Basic Feature Complete.
 
