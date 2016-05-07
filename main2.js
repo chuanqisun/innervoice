@@ -55,7 +55,6 @@ var audioPlayer = {
             _this.player = $("<audio></audio>").attr({
                 'src':_this.tracks[_this.currentTrack].path,
                 'volume':1,
-                'controls':platformDetector.isMobile(),
             }).appendTo("footer")[0];
 
             // Render title, volume, intro, tracks
@@ -93,20 +92,17 @@ var audioPlayer = {
                 $('.audio-control').addClass('paused');
             });
 
-            // Use animate icon and auto start only on desktop clients
-            if (platformDetector.isMobile()) {
-                $('.audio-control-container').remove();
-            } else {
-                // Attach play/pause to icon
-                $('.audio-control').click(function() {
-                    if (!_this.player.paused) {
-                        _this.player.pause();
-                    } else {
-                        _this.playTrack(_this.currentTrack, _this.tracks, _this.displayedPlaylist, _this.player);
-                    }
-                });
+            // Attach play/pause to icon
+            $('.audio-control').click(function() {
+                if (!_this.player.paused) {
+                    _this.player.pause();
+                } else {
+                    _this.playTrack(_this.currentTrack, _this.tracks, _this.displayedPlaylist, _this.player);
+                }
+            });
 
-                // Start playing when first visit tracks page
+            if (!platformDetector.isMobile()) {
+                // Auto play only on desktop
                 _this.playTrack(_this.currentTrack, _this.tracks, _this.displayedPlaylist, _this.player);
             }
         })
