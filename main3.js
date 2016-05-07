@@ -20,14 +20,26 @@ IV = (function() {
 // ==================== Constants ====================
 IV.Constants = (function() {
     var currentVolumnNumber;
+    var audioPath;
+    var volumePathWidth;
+    var debug;
+    var playlistFilename;
 
     function init(config) {
         currentVolumnNumber = config.currentVolumnNumber;
+        audioPath = config.audioPath;
+        volumePathWidth = config.volumePathWidth;
+        debug = config.debug;
+        playlistFilename = config.playlistFilename;
     }
 
     return {
         init: init,
-        get currentVolumnNumber() { return currentVolumnNumber; }
+        get currentVolumnNumber() { return currentVolumnNumber; },
+        get audioPath() { return audioPath; },
+        get volumePathWidth() { return volumePathWidth; },
+        get debug() { return debug; },
+        get playlistFilename() { return playlistFilename; }
     }
 }.call({}));
 
@@ -40,29 +52,31 @@ IV.Service = (function() {
 
     function init(callback) {
         initCallback = callback;
-        // DEBUG uncomment to get mock JSON result
-        $.getJSON = function(str, callback) {
-            mockResult = 
-            [{
-                "volume": "1",
-                "title": "The Northern Whispers",
-                "dates": "2016.May.4",
-                "intro": "Softly they whisper, so as not to be found by the ancient sorrows.",
-                "tracks": [
-                    {"artist":"Radical Face", "name":"Gray Skies", "path":"./audio/001/01-Gray_Skies.mp3", "length":"00:43"},
-                    {"artist":"Carved In Stone", "name":"Die Gärten der Feen", "path":"./audio/001/02-Die_Gaerten_Der_Feen.mp3", "length":"03:03"},
-                    {"artist":"Adaro", "name":"Es Ist Ein Schnee Gefallen", "path":"./audio/001/03-Es_ist_ein_Schnee_gefallen.mp3", "length":"03:59"},
-                    {"artist":"Agnes Obel", "name":"Riverside", "path":"./audio/001/04-Riverside.mp3", "length":"03:51"},
-                    {"artist":"Mono", "name":"Burial At Sea", "path":"./audio/001/05-Burial_at_the_sea.mp3", "length":"10:40"}
-                ]
-            }];
-            window.setTimeout(function(){
-                callback(mockResult);
-            }, 1000);
-        }
-        // End of DEBUG
 
-        $.getJSON("playlist.json", onDataReady);
+        // Overwrite getJSON for local DEBUG
+        if (IV.Constants.debug) {
+            $.getJSON = function(str, callback) {
+                mockResult = 
+                [{
+                    "volume": "1",
+                    "title": "The Northern Whispers",
+                    "dates": "1462651292",
+                    "intro": "Softly they whisper, so as not to be found by the ancient sorrows.",
+                    "tracks": [
+                        {"artist":"Radical Face", "name":"Gray Skies", "filename":"Gray_Skies.mp3", "length":"00:43"},
+                        {"artist":"Carved In Stone", "name":"Die Gärten der Feen", "filename":"Die_Gaerten_Der_Feen.mp3", "length":"03:03"},
+                        {"artist":"Adaro", "name":"Es Ist Ein Schnee Gefallen", "filename":"Es_ist_ein_Schnee_gefallen.mp3", "length":"03:59"},
+                        {"artist":"Agnes Obel", "name":"Riverside", "filename":"Riverside.mp3", "length":"03:51"},
+                        {"artist":"Mono", "name":"Burial At Sea", "filename":"Burial_at_the_sea.mp3", "length":"10:40"}
+                    ]
+                }];
+                window.setTimeout(function(){
+                    callback(mockResult);
+                }, 1000);
+            }
+        }
+
+        $.getJSON(IV.Constants.playlistFilename, onDataReady);
         detectTouchDevice();
     }
 
@@ -72,7 +86,7 @@ IV.Service = (function() {
     }
 
     function detectTouchDevice() {
-        detectTouchDeviceResult =  "ontouchstart" in document.documentElement;
+        detectTouchDeviceResult =  'ontouchstart' in document.documentElement;
     }
 
     function detectMobileDevice() {
@@ -151,13 +165,29 @@ IV.Model = (function() {
         currentTrackNumber = 0;
     }
 
-    function setCurrentTrack(newTrackNumber) {
+    function setCurrentTrackByTrackNumber(newTrackNumber) {
         currentTrackNumber = newTrackNumber;
+    }
+
+    function getPathForTrack(track) {
+        var volumnePath = convertNumberToStringWithWidth(IV.Constants.currentVolumnNumber, IV.Constants.volumePathWidth) + '/';
+        return IV.Constants.audioPath + volumnePath + track.filename;
+    }
+
+    function convertNumberToStringWithWidth(number, width) {
+        var result = Math.pow(10, width);
+        if (number > result || width < 1) {
+            return number.toString(); // overflow, don't convert
+        } else {
+            number += result;
+            return number.toString().slice(1);
+        }
     }
 
     return {
         init: init,
-        setCurrentTrack: setCurrentTrack,
+        setCurrentTrackByTrackNumber: setCurrentTrackByTrackNumber,
+        getPathForTrack: getPathForTrack,
         get playlist() { return playlist; },
         get tracks() { return tracks; },
         get currentTrackNumber() { return currentTrackNumber; },
@@ -219,7 +249,7 @@ IV.View = (function() {
 
     function hydrateAudioPlayer() {
         return $audio.attr({
-            'src': IV.Model.currentTrack.path,
+            'src': IV.Model.getPathForTrack(IV.Model.currentTrack),
             'volume': 1,
             'preload': 'none'
         });
@@ -324,8 +354,8 @@ IV.Controller = (function() {
 
     function playTrackByTrackNumber(trackNumber, reload) {
         if(IV.Model.currentTrackNumber !== trackNumber || reload) {
-            IV.Model.setCurrentTrack(trackNumber);
-            audioPlayer.src = IV.Model.currentTrack.path;
+            IV.Model.setCurrentTrackByTrackNumber(trackNumber);
+            audioPlayer.src = IV.Model.getPathForTrack(IV.Model.currentTrack);
             audioPlayer.load();
         }
 
@@ -350,7 +380,11 @@ IV.Controller = (function() {
 
 // ==================== Config ====================
 var config  = {
-    currentVolumnNumber: 1
+    debug: true,
+    currentVolumnNumber: 1,
+    audioPath: './audio/',
+    volumePathWidth: 3, // # of digits in the path
+    playlistFilename: 'playlist.json'
 };
 
 

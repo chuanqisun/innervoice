@@ -1,13 +1,13 @@
 [{
     "volume": "1",
     "title": "The Northern Whispers",
-    "dates": "2016.May.4",
+    "dates": "1462651292",
     "intro": "Softly they whisper, so as not to be found by the ancient sorrows.",
     "tracks": [
-        {"artist":"Radical Face", "name":"Gray Skies", "path":"./audio/001/01-Gray_Skies.mp3", "length":"00:43"},
-        {"artist":"Carved In Stone", "name":"Die Gärten der Feen", "path":"./audio/001/02-Die_Gaerten_Der_Feen.mp3", "length":"03:03"},
-        {"artist":"Adaro", "name":"Es Ist Ein Schnee Gefallen", "path":"./audio/001/03-Es_ist_ein_Schnee_gefallen.mp3", "length":"03:59"},
-        {"artist":"Agnes Obel", "name":"Riverside", "path":"./audio/001/04-Riverside.mp3", "length":"03:51"},
-        {"artist":"Mono", "name":"Burial At Sea", "path":"./audio/001/05-Burial_at_the_sea.mp3", "length":"10:40"}
+        {"artist":"Radical Face", "name":"Gray Skies", "filename":"Gray_Skies.mp3", "length":"00:43"},
+        {"artist":"Carved In Stone", "name":"Die Gärten der Feen", "filename":"Die_Gaerten_Der_Feen.mp3", "length":"03:03"},
+        {"artist":"Adaro", "name":"Es Ist Ein Schnee Gefallen", "filename":"Es_ist_ein_Schnee_gefallen.mp3", "length":"03:59"},
+        {"artist":"Agnes Obel", "name":"Riverside", "filename":"Riverside.mp3", "length":"03:51"},
+        {"artist":"Mono", "name":"Burial At Sea", "filename":"Burial_at_the_sea.mp3", "length":"10:40"}
     ]
 }]
