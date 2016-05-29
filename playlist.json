@@ -10,4 +10,17 @@
         {"artist":"Agnes Obel", "name":"Riverside", "filename":"Riverside.mp3", "length":"03:51"},
         {"artist":"Mono", "name":"Burial At Sea", "filename":"Burial_at_the_sea.mp3", "length":"10:40"}
     ]
+}, 
+{
+    "volume": "2",
+    "title": "End of Time",
+    "dates": "1464549259",
+    "intro": "In the end, time ceased to be, and yet the minds sought hope in the impossible realm of future.",
+    "tracks": [
+        {"artist":"Ben Lukas Boysen", "name":"And by Sweet I Mean", "filename":"And_by_sweet_I_mean.mp3", "length":"06:06"},
+        {"artist":"Fieldwork", "name":"This Is Not the End", "filename":"This_is_not_the_end.mp3", "length":"06:34"},
+        {"artist":"Library Tapes", "name":"Feathers", "filename":"Feathers.mp3", "length":"03:06"},
+        {"artist":"Hans Zimmer", "name":"Day One", "filename":"Day_one.mp3", "length":"03:19"},
+        {"artist":"Logh", "name":"Death to My Hometown", "filename":"Death_to_my_hometown.mp3", "length":"03:22"}
+    ]
 }]

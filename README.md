@@ -1,5 +1,13 @@
 # innervoice
 ## Revision History
+
+### v1.0.1
+5/29/2016
+
+Refactor config parameters into config.js
+
+Add subscribe link for preview mode
+
 ### v1.0.0
 5/7/2016
 

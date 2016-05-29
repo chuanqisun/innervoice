@@ -7,21 +7,22 @@
     <meta name="description" content="Boutique playlists for postrock, neofolk, indie, and alternative rock, updated every once in a while.">
     <meta name="author" content="Chuanqi">
     <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Lato:700,300' media="none" onload="this.media='all';">
-    <link rel='stylesheet' type='text/css' href="playlist-1.0.0.css">
+    <link rel='stylesheet' type='text/css' href="playlist-1.0.1.css">
     <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <script src="https://code.jquery.com/jquery-2.2.3.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./external/lodash.core.min.js" defer></script>
-    <script type="text/javascript" src="main-1.0.0.js" defer></script>
+    <script type="text/javascript" src="config-1.0.0.js" defer></script>
+    <script type="text/javascript" src="main-1.0.1.js" defer></script>
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-77426043-1', 'auto');
-      ga('send', 'pageview');
+        ga('create', 'UA-77426043-1', 'auto');
+        ga('send', 'pageview');
     </script>
 </head>
 
@@ -39,7 +40,10 @@
             <div id="tracks" class="tracks-container dynamic-route">
                 <ol class="tracks"></ol>
                 <div class="nav-container">
-                    <a href="#intro" class="prev"></a>
+                    <a href="#intro" class="prev"></a>   
+                    <div class="extra-actions-container hide preview">
+                        <a href="index.html" class="subscribe"></a>  
+                    </div>                                   
                 </div>
             </div>
 
