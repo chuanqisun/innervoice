@@ -11,8 +11,6 @@ Add subscribe link for preview mode
 ### v1.0.0
 5/7/2016
 
-Deployed to to [Inner Voice BETA](http://innervoice.azurewebsites.net)
-
 Basic Feature Complete.
 
 Desktop supports IE11, Edge, Chrome.
