@@ -114,6 +114,7 @@ header, footer {
 
 .row {
   width: 100%;
+  text-align: center;
 }
 
 .responsive-column {
@@ -132,10 +133,6 @@ header, footer {
 .responsive-row:focus, .responsive-row:hover {
   border-color: #666;
   color: #666;
-}
-
-#mc-embedded-subscribe-form {
-  text-align: center;
 }
 
 .mc-field-group {
