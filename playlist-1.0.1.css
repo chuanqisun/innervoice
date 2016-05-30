@@ -200,7 +200,7 @@ header, footer {
 }
 
 .nav-container .extra-actions-container {
-    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .nav-container .extra-actions-container .subscribe::after {
