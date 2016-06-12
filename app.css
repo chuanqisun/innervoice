@@ -14,6 +14,10 @@
     font-family: glyphicon;
 }
 
+.responsive-medium-icon {
+    font-size: calc( 22px + (26 - 22) * ( (100vw - 300px) / ( 1600 - 300) ));
+}
+
 .responsive-small-font {
     font-size: calc( 16px + (28 - 16) * ( (100vw - 300px) / ( 1600 - 300) ));
 }
@@ -117,7 +121,7 @@ html, body {
     padding-right: 15px;
 }
 
-.medium-v-margin {
+.medium-b-margin {
     margin-bottom: 20px;
 }
 
@@ -177,16 +181,26 @@ html, body {
     background-color: rgba(255, 255, 255, 0.25);    
 }
 
-.foreground-frosted {
-    border-color: rgba(255, 255, 255, 0.8);
-    color: rgba(255, 255, 255, 0.8);
+.primary-foregroud {
+    color: white;
+    border-color: white;
 }
 
+/*.foreground-frosted {
+    border-color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.8);
+}*/
+
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .hover-highlight:hover {
+    color: greenyellow;
+    border-color: greenyellow;
+}
+
+.focus-highlight:focus {
     color: greenyellow;
     border-color: greenyellow;
 }
@@ -220,12 +234,25 @@ html, body {
     animation-fill-mode: both;
 }
 
+.right-overflow-hide {
+    visibility: hidden;
+    transform: translateX(100vw);
+}
+
+.right-overflow-hide.active {
+    visibility: visible;
+    animation-name: h-dropdown;
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
+}
+
 .top-overflow-hide {
-    position: absolute;
+    visibility: hidden;
     transform: translateY(-100vh);
 }
 
 .top-overflow-hide.active {
+    visibility: visible;
     animation-name: v-dropdown;
     animation-duration: 0.2s;
     animation-fill-mode: both;
@@ -246,10 +273,41 @@ html, body {
     to {transform: translateY(0px);}
 }
 
+@keyframes h-dropdown {
+    to {transform: translateX(0px);}
+}
+
 @keyframes micro-v-dropdown {
     to {padding-top: 20px;}
 }
 
+/* ========== Component - Input ========== */
+input {
+    box-sizing: border-box;
+    background-color: transparent;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    color: white;
+}
+
+input[type=email], input[type=text] {
+  cursor: text;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: white;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: white;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: white;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: white;
+}
 
 /* ========== Component - Button ========== */ 
 button {
@@ -263,7 +321,6 @@ button {
 
 .light-border {
     border: 1px solid white;
-    color: white;
 }
 
 .full-screen-hide-button {
@@ -277,8 +334,18 @@ button {
     background: black;
 }
 
+.menu-container {
+    overflow: hidden;
+    position: absolute;
+}
+
 /* ========== Component - iFrame ========== */
 .iframe {
     border: 0px none;
     display: block;
+}
+
+/* ========== Component - Content Container ========== */
+.content-container {
+    position: absolute;
 }

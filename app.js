@@ -2,6 +2,8 @@
 IV = (function() {
     function init() {
         IV.Constants.init();
+        IV.Service.init();
+
         IV.View.init();
         IV.Router.init();
     }
@@ -17,14 +19,18 @@ IV.Constants = (function() {
 	    animateCSSClass: "animate",
         playerOverlayContainer: "player-overlay-container",
         hidden: "hidden",
-        active: "active"
+        active: "active",
+        rightOverflowHide: "right-overflow-hide"
     }
 
     var IDs = {
         launch: "launch",
         showMenu: "show-menu",
         hideMenu: "hide-menu",
-        dropdown: "dropdown"
+        dropdown: "dropdown",
+        subscribe: "subscribe",
+        generalMode: "general-mode",
+        subscribeMode: "subscribe-mode"
     }
 
     var Routes = {
@@ -44,6 +50,35 @@ IV.Constants = (function() {
         get animateStepLength() { return animateStepLength; },
         get Routes() { return Routes; }
     }
+}.call({}));
+
+// ==================== Service ====================
+IV.Service = (function() {
+    var playlists;
+    var initCallback;
+
+    function init(callback) {
+        initCallback = callback
+        loadPlaylists();
+    }
+
+    function loadPlaylists() {
+        var xmlhttp = new XMLHttpRequest();
+        var url = Config.playlistFilename;
+
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                playlists = JSON.parse(xmlhttp.responseText);
+            }
+        };
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+    }
+
+
+    return {
+        init: init
+    };
 }.call({}));
 
 // ==================== Router ====================
@@ -107,6 +142,7 @@ IV.Router = (function() {
 IV.View = (function() {
     var Buttons = {};
     var Menus = {};
+    var MenuModes = {};
     var animateTimers = [];
 
     function init() {
@@ -118,13 +154,17 @@ IV.View = (function() {
         Buttons.launch = document.getElementById(IV.Constants.IDs.launch);
         Buttons.showMenu = document.getElementById(IV.Constants.IDs.showMenu);
         Buttons.hideMenu = document.getElementById(IV.Constants.IDs.hideMenu);
+        Buttons.subscribe = document.getElementById(IV.Constants.IDs.subscribe);
         Menus.dropdown = document.getElementById(IV.Constants.IDs.dropdown);
+        MenuModes.generalMode = document.getElementById(IV.Constants.IDs.generalMode);
+        MenuModes.subscribeMode = document.getElementById(IV.Constants.IDs.subscribeMode);
     }
 
     function bindInteractions() {
         Buttons.launch.onclick = IV.Router.navigateToPlayerView;
         Buttons.showMenu.onclick = showMenu;
         Buttons.hideMenu.onclick = hideMenu;
+        Buttons.subscribe.onclick = animateMenuToSubscribeMode;
     }
 
     function showMenu() {
@@ -135,6 +175,28 @@ IV.View = (function() {
     function hideMenu() {
         Menus.dropdown.classList.remove(IV.Constants.Classes.active);
         Buttons.showMenu.classList.remove(IV.Constants.Classes.hidden);
+        switchMenuToMode(MenuModes.generalMode, false);
+    }
+
+    function animateMenuToSubscribeMode() {
+        switchMenuToMode(MenuModes.subscribeMode)
+    }
+
+    function switchMenuToMode(targetMode, animate = true) {
+        for(var menuMode in MenuModes) {
+            if (targetMode !== MenuModes[menuMode])
+                // hide other modes
+                MenuModes[menuMode].classList.add(IV.Constants.Classes.hidden);
+        }
+
+        // show selected mode
+        targetMode.classList.remove(IV.Constants.Classes.hidden);
+        
+        // optional animation
+        if (animate) {
+            targetMode.classList.add(IV.Constants.Classes.rightOverflowHide);
+            targetMode.classList.add(IV.Constants.Classes.active);
+        }
     }
 
     function animateLandingPage() {
@@ -180,6 +242,15 @@ IV.View = (function() {
     };
 }.call({}));
 
+
+// ==================== Global Config ====================
+const Config  = {
+    "debug": false,
+    "currentVolumnNumber": 2,
+    "audioPath": "./audio/",
+    "volumePathWidth": 3, // # of digits in the path
+    "playlistFilename": "playlist.json"
+};
 
 // ==================== Bootstrap ====================
 IV.init();
