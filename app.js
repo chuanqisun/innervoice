@@ -3,7 +3,6 @@ IV = (function() {
     function init() {
         IV.Constants.init();
         IV.Service.init();
-
         IV.View.init();
         IV.Router.init();
     }
@@ -30,12 +29,19 @@ IV.Constants = (function() {
         dropdown: "dropdown",
         subscribe: "subscribe",
         generalMode: "general-mode",
-        subscribeMode: "subscribe-mode"
+        subscribeMode: "subscribe-mode",
+        contentIFrame: "content-iframe",
+        contentTitle: "content-title",
+        contentIntro: "content-intro"
     }
 
     var Routes = {
         landing: "landing",
         player: "player"
+    }
+
+    var Texts = {
+        titlePrefix: "Issue No."
     }
 
     var animateStepLength = 750;
@@ -48,36 +54,62 @@ IV.Constants = (function() {
         get Classes() { return Classes; },
         get IDs() { return IDs; },
         get animateStepLength() { return animateStepLength; },
-        get Routes() { return Routes; }
+        get Routes() { return Routes; },
+        get Texts() { return Texts; }
     }
 }.call({}));
 
 // ==================== Service ====================
 IV.Service = (function() {
     var playlists;
-    var initCallback;
+    var currentIssueNumber;
 
-    function init(callback) {
-        initCallback = callback
-        loadPlaylists();
+    function init() {
+        loadData();
     }
 
-    function loadPlaylists() {
-        var xmlhttp = new XMLHttpRequest();
-        var url = Config.playlistFilename;
-
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                playlists = JSON.parse(xmlhttp.responseText);
-            }
-        };
-        xmlhttp.open("GET", url, true);
-        xmlhttp.send();
+    function loadData() {
+        playlists = Data.playlists;
+        currentIssueNumber = Data.currentIssueNumber;
     }
 
+    function getIssueNumber() {
+        // TODO get query parameter from router
+        return currentIssueNumber;  
+    }
+
+    function getContentTitle() {
+        var targetIssueNumber = getIssueNumber();
+        var targetPlaylist = getPlaylistByIssueNumber(targetIssueNumber);
+        return targetPlaylist.title;
+    }
+
+    function getContentIntro() {
+        var targetIssueNumber = getIssueNumber();
+        var targetPlaylist = getPlaylistByIssueNumber(targetIssueNumber);
+        return targetPlaylist.intro;
+    }
+
+    function getIFrameURL() {
+        var targetIssueNumber = getIssueNumber();
+        var targetPlaylist = getPlaylistByIssueNumber(targetIssueNumber);
+        return targetPlaylist.embedUrl;
+    }
+
+    function getPlaylistByIssueNumber(issueNumber) {
+        for(var i = 0, l = playlists.length; i < l; i++) {
+            if (playlists[i].issueNumber === issueNumber)
+                return playlists[i];
+        }
+    }
 
     return {
-        init: init
+        init: init,
+        playlists: playlists,
+        getIssueNumber: getIssueNumber,
+        getContentTitle: getContentTitle,
+        getContentIntro: getContentIntro,
+        getIFrameURL: getIFrameURL
     };
 }.call({}));
 
@@ -143,10 +175,12 @@ IV.View = (function() {
     var Buttons = {};
     var Menus = {};
     var MenuModes = {};
+    var DynamicContent = {};
     var animateTimers = [];
 
     function init() {
         fetchElements();
+        hydrateTemplates();
         bindInteractions();
      }
 
@@ -158,6 +192,16 @@ IV.View = (function() {
         Menus.dropdown = document.getElementById(IV.Constants.IDs.dropdown);
         MenuModes.generalMode = document.getElementById(IV.Constants.IDs.generalMode);
         MenuModes.subscribeMode = document.getElementById(IV.Constants.IDs.subscribeMode);
+        DynamicContent.contentIFrame = document.getElementById(IV.Constants.IDs.contentIFrame);
+        DynamicContent.contentTitle = document.getElementById(IV.Constants.IDs.contentTitle);
+        DynamicContent.contentIntro = document.getElementById(IV.Constants.IDs.contentIntro);
+
+    }
+
+    function hydrateTemplates() {
+        setIFrameURL();
+        setTitle();
+        setIntro();
     }
 
     function bindInteractions() {
@@ -176,6 +220,18 @@ IV.View = (function() {
         Menus.dropdown.classList.remove(IV.Constants.Classes.active);
         Buttons.showMenu.classList.remove(IV.Constants.Classes.hidden);
         switchMenuToMode(MenuModes.generalMode, false);
+    }
+
+    function setTitle() {
+        DynamicContent.contentTitle.textContent = IV.Constants.Texts.titlePrefix + IV.Service.getIssueNumber() + ' – ' + IV.Service.getContentTitle();
+    }
+
+    function setIntro() {
+        DynamicContent.contentIntro.textContent = IV.Service.getContentIntro();
+    }
+
+    function setIFrameURL() {
+        DynamicContent.contentIFrame.src = IV.Service.getIFrameURL();
     }
 
     function animateMenuToSubscribeMode() {
@@ -241,16 +297,6 @@ IV.View = (function() {
         hideMenu: hideMenu
     };
 }.call({}));
-
-
-// ==================== Global Config ====================
-const Config  = {
-    "debug": false,
-    "currentVolumnNumber": 2,
-    "audioPath": "./audio/",
-    "volumePathWidth": 3, // # of digits in the path
-    "playlistFilename": "playlist.json"
-};
 
 // ==================== Bootstrap ====================
 IV.init();

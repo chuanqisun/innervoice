@@ -100,33 +100,27 @@ html, body {
 }
 
 /* ========== margin and padding ==========*/
+.banner-padding {
+    box-sizing: border-box;
+    padding: 30px 15px;
+}
+
+.boxed-content-padding {
+    box-sizing: border-box;
+    padding: 8px 15px;
+}
+
 .huge-b-margin {
     margin-bottom: 45px;
 }
 
-.large-b-margin {
-    margin-bottom: 30px;
+.boxed-content-padding-small {
+    box-sizing: border-box;
+    padding: 5px 8px; 
 }
 
-.medium-t-padding {
-    padding-top: 8px;
-}
-
-.medium-b-padding {
-    padding-bottom: 8px;
-}
-
-.medium-h-padding {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-.medium-b-margin {
-    margin-bottom: 20px;
-}
-
-.medium-t-margin {
-    margin-top: 20px;
+.boxed-content-custom-padding {
+    padding: 0px 15px 8px 15px;
 }
 
 .medium-b-margin {
@@ -137,20 +131,8 @@ html, body {
     margin-right: 10px;
 }
 
-.small-t-margin {
-    margin-top: 10px;
-}
-
 .small-b-margin {
     margin-bottom: 10px;
-}
-
-.tiny-b-margin {
-    margin-bottom: 5px;
-}
-
-.tiny-t-margin {
-    margin-top: 5px;
 }
 
 /* ========== Global Interactions ========== */
@@ -177,8 +159,12 @@ html, body {
     background-color: black;
 }
 
-.background-frosted {
+.background-frosted-light {
     background-color: rgba(255, 255, 255, 0.25);    
+}
+
+.background-frosted-dark {
+    background-color: rgba(0, 0, 0, 0.70);    
 }
 
 .primary-foregroud {
@@ -341,6 +327,7 @@ button {
 }
 
 /* ========== Component - Content Container ========== */
-.content-container {
+.content-overlay {
     position: absolute;
+    pointer-events: none;
 }
