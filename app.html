@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Inner Voice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="A music boutique">
+    <meta name="author" content="Chuanqi Sun">
+    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Lato:700,300' media="none" onload="this.media='all';">
+    <link rel='stylesheet' type='text/css' href="app.css">
+    <script type="text/javascript" src="app.js" defer></script>
+</head>
+
+<body>
+    <div class="full-screen-height flex-layout-container flex-h-center flex-v-center landing-splash router">
+        <!--player route-->
+        <div id="player" class="route full-screen-width full-screen-height background-black">
+            <div class="flex-layout-container full-screen-height">
+                <div id="dropdown" class="menu-container background-frosted flex-layout-container full-screen-width full-screen-height flex-v-center flex-h-center top-overflow-hide">
+                    <div class="step-1 flex-layout-container">
+                        <button id="hide-menu" class="full-screen-hide-button glyphicon clickable hover-highlight responsive-medium-font">&#xe902;</button>
+                        <button id="archive" class="disabled button-medium medium-b-padding medium-t-padding medium-v-margin light-border responsive-medium-font responsive-width">Archive</button>
+                        <button id="subscribe" class="clickable hover-highlight button-medium medium-b-padding medium-t-padding medium-v-margin light-border responsive-medium-font responsive-width">Subscribe</button>
+                    </div>
+                    <div class="step-2 flex-layout-container right-overflow-hide">
+                        <!--<input id="hide-menu" class="full-screen-hide-button glyphicon clickable hover-highlight responsive-small-font">&#xe902;</button>
+                        <input id="archive" class="disabled button-medium medium-b-padding medium-t-padding medium-v-margin light-border responsive-medium-font responsive-width">Archive</button>-->
+                        <button id="submit" class="clickable hover-highlight button-medium medium-b-padding medium-t-padding medium-v-margin light-border responsive-medium-font responsive-width">Submit</button>
+                    </div>
+                </div>
+                <div id="show-menu" class="dropdown-handle micro-drop-on-hover flex-rigid flex-layout-container flex-v-center clickable">
+                    <button class="glyphicon clickable dark-button tiny-b-margin tiny-t-margin responsive-medium-font">&#xe903;</button>
+                </div>
+                <iframe class="iframe flex-only-grow full-screen-width" src="http://8tracks.com/mixes/8058834/player_v3_universal"></iframe>
+            </div>
+        </div>
+
+        <!--landing route-->
+        <div id="landing" class="route">
+            <div class="full-screen-width flex-layout-container flex-h-center flex-v-center background-frosted">
+                <h1 class="foreground-frosted responsive-large-font medium-t-margin small-b-margin">
+                    <span class="transition-expandee animate-onload-2" data-expander-text="NNER&nbsp;|&nbsp;">I</span><span class="transition-expandee animate-onload-2" data-expander-text="OICE">V</span>
+                </h1>
+                <h2 class="foreground-frosted responsive-medium-font fade-in-insert animate-onload-2 huge-b-margin text-h-center">postrock | indie rock | neofolk | alternative | soundtracks </h2>
+                <button id="launch" class="clickable hover-highlight button-medium medium-v-margin light-border medium-b-padding medium-h-padding foreground-frosted responsive-medium-font fade-in-insert animate-onload-4"><span class="glyphicon text-v-center small-r-margin">&#xe904</span><span class="text-v-center">Listen for free</span></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
