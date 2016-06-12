@@ -17,35 +17,39 @@
         <!--player route-->
         <div id="player" class="route full-screen-width full-screen-height background-black">
             <!--intro-->
-            <div class="content-overlay full-screen-width full-screen-height flex-layout-container flex-h-center flex-v-center">
-                <div class="background-frosted-dark banner-padding">
-                    <h1 id="content-title" class="primary-foregroud responsive-meidum-font text-h-center small-b-margin"></h2>
-                    <h2 id="content-intro" class="primary-foregroud responsive-small-font"></h2>
+            <div id="content-banner" class="content-overlay full-screen-width full-screen-height flex-layout-container flex-h-center flex-v-center fade-in duration-3s">
+                <div class="full-screen-width background-frosted-dark text-h-center banner-padding">
+                    <h1 id="content-title" class="primary-foregroud-dark responsive-medium-font small-b-margin"></h2>
+                    <h2 id="content-intro" class="primary-foregroud-dark responsive-small-font huge-b-margin responsive-text-left-align"></h2>
+                    <div>
+                        <button id="show-player" class="primary-foregroud-dark glyphicon clickable hover-highlight responsive-large-icon">&#xe900;</button>
+                    </div>
                 </div>
             </div>            
-            <div class="flex-layout-container full-screen-height">
+            <div id="loaded-player" class="flex-layout-container full-screen-height fade-in duration-1s hidden">
                 <!--dropdown-->
                 <div id="dropdown" class="menu-container background-frosted-dark flex-layout-container full-screen-width full-screen-height flex-v-center flex-h-center top-overflow-hide">
-                    <button id="hide-menu" class="full-screen-hide-button glyphicon clickable hover-highlight responsive-medium-icon">&#xe902;</button>
+                    <button id="hide-menu" class="primary-foregroud-dark full-screen-hide-button glyphicon clickable hover-highlight responsive-medium-icon">&#xe902;</button>
                     <div id="general-mode" class="flex-layout-container">
-                        <button id="archive" class="disabled boxed-content-padding medium-b-margin light-border responsive-medium-font responsive-width">Archive</button>
-                        <button id="subscribe" class="clickable hover-highlight boxed-content-padding light-border responsive-medium-font responsive-width">Subscribe</button>
+                        <button id="restart-intro" class="primary-foregroud-dark clickable hover-highlight boxed-content-padding medium-b-margin light-border responsive-medium-font responsive-width">Intro</button>
+                        <button id="archive" class="primary-foregroud-dark disabled boxed-content-padding medium-b-margin light-border responsive-medium-font responsive-width">Archive</button>
+                        <button id="subscribe" class="primary-foregroud-dark clickable hover-highlight boxed-content-padding light-border responsive-medium-font responsive-width">Subscribe</button>
                     </div>
                     <div id="subscribe-mode" class="flex-layout-container hidden">
                         <form action="//github.us13.list-manage.com/subscribe/post?u=24b2e89a93987c59ce1ad6472&amp;id=476a42bdda" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate">
                             <div class="medium-b-margin">
-                                <input type="text" value="" name="FIRSTNAME" class="focus-highlight boxed-content-padding responsive-medium-font responsive-width required light-border" required id="mce-FIRSTNAME" placeholder="Enter first name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter first Name'">
+                                <input type="text" value="" name="FIRSTNAME" class="primary-foregroud-dark focus-highlight boxed-content-padding responsive-medium-font responsive-width required light-border" required id="mce-FIRSTNAME" placeholder="Enter first name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter first Name'">
                             </div>
                             <div class="medium-b-margin">
-                                <input type="text" value="" name="LASTNAME" class="focus-highlight boxed-content-padding responsive-medium-font responsive-width required light-border" required id="mce-LASTNAME" placeholder="Enter last name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter last Name'">
+                                <input type="text" value="" name="LASTNAME" class="primary-foregroud-dark focus-highlight boxed-content-padding responsive-medium-font responsive-width required light-border" required id="mce-LASTNAME" placeholder="Enter last name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter last Name'">
                             </div>
                             <div class="medium-b-margin">
-                                <input type="email" value="" name="EMAIL" class="focus-highlight boxed-content-padding responsive-medium-font responsive-width required light-border email" id="mce-EMAIL" required placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+                                <input type="email" value="" name="EMAIL" class="primary-foregroud-dark focus-highlight boxed-content-padding responsive-medium-font responsive-width required light-border email" id="mce-EMAIL" required placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
                             </div>
                             <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                             <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_24b2e89a93987c59ce1ad6472_476a42bdda" tabindex="-1" value=""></div>
                             <div>
-                                <button id="submit" class="clickable hover-highlight boxed-content-padding light-border responsive-medium-font responsive-width">Submit</button>
+                                <button id="submit" class="primary-foregroud-dark clickable hover-highlight boxed-content-padding light-border responsive-medium-font responsive-width">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -62,11 +66,11 @@
         <!--landing route-->
         <div id="landing" class="route">
             <div class="full-screen-width flex-layout-container flex-h-center flex-v-center background-frosted-light banner-padding">
-                <h1 class="primary-foregroud responsive-large-font small-b-margin">
+                <h1 class="primary-foregroud-light responsive-large-font small-b-margin">
                     <span class="transition-expandee animate-onload-2" data-expander-text="NNER&nbsp;|&nbsp;">I</span><span class="transition-expandee animate-onload-2" data-expander-text="OICE">V</span>
                 </h1>
-                <h2 class="primary-foregroud responsive-medium-font fade-in-insert animate-onload-2 huge-b-margin text-h-center">postrock | indie rock | neofolk | alternative | soundtracks </h2>
-                <button id="launch" class="clickable hover-highlight light-border boxed-content-custom-padding primary-foregroud responsive-medium-font fade-in-insert animate-onload-4">
+                <h2 class="primary-foregroud-light responsive-medium-font fade-in-insert animate-onload-2 huge-b-margin text-h-center">postrock | indie rock | neofolk | alternative | soundtracks </h2>
+                <button id="launch" class="clickable hover-highlight light-border boxed-content-custom-padding primary-foregroud-light responsive-medium-font fade-in-insert animate-onload-4">
                     <span class="glyphicon clickable text-v-center small-r-margin">&#xe904</span><span class="clickable text-v-center">Listen for free</span>
                 </button>
             </div>

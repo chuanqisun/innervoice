@@ -15,11 +15,15 @@ IV = (function() {
 // ==================== Constants ====================
 IV.Constants = (function() {
     var Classes = {
-	    animateCSSClass: "animate",
+	    animate: "animate",
         playerOverlayContainer: "player-overlay-container",
         hidden: "hidden",
         active: "active",
-        rightOverflowHide: "right-overflow-hide"
+        rightOverflowHide: "right-overflow-hide",
+        fadeIn: "fade-in",
+        fadeOut: "fade-out",
+        duration3s: "duration-3s",
+        duration1s: "duration-1s"
     }
 
     var IDs = {
@@ -30,14 +34,19 @@ IV.Constants = (function() {
         subscribe: "subscribe",
         generalMode: "general-mode",
         subscribeMode: "subscribe-mode",
+        contentBanner: "content-banner",
         contentIFrame: "content-iframe",
         contentTitle: "content-title",
-        contentIntro: "content-intro"
+        contentIntro: "content-intro",
+        showPlayer: "show-player",
+        loadedPlayer: "loaded-player",
+        restartIntro: "restart-intro"
     }
 
     var Routes = {
         landing: "landing",
-        player: "player"
+        player: "player",
+        issueQuery: "i"
     }
 
     var Texts = {
@@ -74,8 +83,9 @@ IV.Service = (function() {
     }
 
     function getIssueNumber() {
-        // TODO get query parameter from router
-        return currentIssueNumber;  
+        var customIssue = parseInt(getQueryParameter(IV.Constants.Routes.issueQuery));
+        var issueNumber = customIssue > 0 ? customIssue : currentIssueNumber;
+        return issueNumber;
     }
 
     function getContentTitle() {
@@ -101,6 +111,16 @@ IV.Service = (function() {
             if (playlists[i].issueNumber === issueNumber)
                 return playlists[i];
         }
+    }
+
+    function getQueryParameter(query) {
+        var url = window.location.href;
+        query = query.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + query + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
 
     return {
@@ -145,15 +165,16 @@ IV.Router = (function() {
     }
 
     function onExitLandingView() {
-        IV.View.animateLandingPageReset();
+        IV.View.landingViewReset();
     }
 
     function onEnterPlayerView() {
-
+        IV.View.animatePlayerPageLoading();
     }
 
     function onExitPlayerView() {
         IV.View.hideMenu();
+        IV.View.playerViewReset();
     }
 
     function navigateToPlayerView() {
@@ -173,7 +194,7 @@ IV.Router = (function() {
 // ==================== View ====================
 IV.View = (function() {
     var Buttons = {};
-    var Menus = {};
+    var ToggleViews = {};
     var MenuModes = {};
     var DynamicContent = {};
     var animateTimers = [];
@@ -188,14 +209,17 @@ IV.View = (function() {
         Buttons.launch = document.getElementById(IV.Constants.IDs.launch);
         Buttons.showMenu = document.getElementById(IV.Constants.IDs.showMenu);
         Buttons.hideMenu = document.getElementById(IV.Constants.IDs.hideMenu);
+        Buttons.restartIntro = document.getElementById(IV.Constants.IDs.restartIntro);
         Buttons.subscribe = document.getElementById(IV.Constants.IDs.subscribe);
-        Menus.dropdown = document.getElementById(IV.Constants.IDs.dropdown);
+        Buttons.showPlayer = document.getElementById(IV.Constants.IDs.showPlayer);
+        ToggleViews.dropdown = document.getElementById(IV.Constants.IDs.dropdown);
+        ToggleViews.contentBanner = document.getElementById(IV.Constants.IDs.contentBanner);
+        ToggleViews.loadedPlayer = document.getElementById(IV.Constants.IDs.loadedPlayer);
         MenuModes.generalMode = document.getElementById(IV.Constants.IDs.generalMode);
         MenuModes.subscribeMode = document.getElementById(IV.Constants.IDs.subscribeMode);
         DynamicContent.contentIFrame = document.getElementById(IV.Constants.IDs.contentIFrame);
         DynamicContent.contentTitle = document.getElementById(IV.Constants.IDs.contentTitle);
         DynamicContent.contentIntro = document.getElementById(IV.Constants.IDs.contentIntro);
-
     }
 
     function hydrateTemplates() {
@@ -209,17 +233,28 @@ IV.View = (function() {
         Buttons.showMenu.onclick = showMenu;
         Buttons.hideMenu.onclick = hideMenu;
         Buttons.subscribe.onclick = animateMenuToSubscribeMode;
+        Buttons.showPlayer.onclick = animatePlayerPageLoaded;
+        Buttons.restartIntro.onclick = restartIntro;
     }
 
     function showMenu() {
-        Menus.dropdown.classList.add(IV.Constants.Classes.active);
+        ToggleViews.dropdown.classList.add(IV.Constants.Classes.active);
         Buttons.showMenu.classList.add(IV.Constants.Classes.hidden);
+        hideBanner();
     }
 
     function hideMenu() {
-        Menus.dropdown.classList.remove(IV.Constants.Classes.active);
+        ToggleViews.dropdown.classList.remove(IV.Constants.Classes.active);
         Buttons.showMenu.classList.remove(IV.Constants.Classes.hidden);
         switchMenuToMode(MenuModes.generalMode, false);
+    }
+
+    function showBanner() {
+        ToggleViews.contentBanner.classList.remove(IV.Constants.Classes.hidden);
+    }
+
+    function hideBanner() {
+        ToggleViews.contentBanner.classList.add(IV.Constants.Classes.hidden);
     }
 
     function setTitle() {
@@ -238,7 +273,10 @@ IV.View = (function() {
         switchMenuToMode(MenuModes.subscribeMode)
     }
 
-    function switchMenuToMode(targetMode, animate = true) {
+    function switchMenuToMode(targetMode, animate) {
+        // Pre-ECMA5 default value
+        animate = typeof animate !== 'undefined' ? animate : true;
+
         for(var menuMode in MenuModes) {
             if (targetMode !== MenuModes[menuMode])
                 // hide other modes
@@ -255,11 +293,47 @@ IV.View = (function() {
         }
     }
 
+    function animatePlayerPageLoading() {
+        ToggleViews.contentBanner.classList.add(IV.Constants.Classes.animate);
+    }
+
+    function animatePlayerPageLoaded() {
+        ToggleViews.contentBanner.classList.remove(IV.Constants.Classes.animate);
+        ToggleViews.contentBanner.classList.remove(IV.Constants.Classes.fadeIn);
+        ToggleViews.contentBanner.classList.remove(IV.Constants.Classes.duration3s);
+        ToggleViews.contentBanner.classList.add(IV.Constants.Classes.duration1s);
+        ToggleViews.contentBanner.classList.add(IV.Constants.Classes.fadeOut);
+        window.setTimeout(function() {
+            ToggleViews.contentBanner.classList.add(IV.Constants.Classes.animate);
+            ToggleViews.loadedPlayer.classList.remove(IV.Constants.Classes.hidden);
+            ToggleViews.loadedPlayer.classList.add(IV.Constants.Classes.animate);
+        }, 0);
+    }
+
+    function playerViewReset() {
+        hideMenu();
+        ToggleViews.contentBanner.classList.remove(IV.Constants.Classes.hidden);
+        ToggleViews.contentBanner.classList.remove(IV.Constants.Classes.animate);
+        ToggleViews.contentBanner.classList.remove(IV.Constants.Classes.fadeOut);
+        ToggleViews.contentBanner.classList.remove(IV.Constants.Classes.duration1s);
+        ToggleViews.contentBanner.classList.add(IV.Constants.Classes.duration3s);
+        ToggleViews.contentBanner.classList.add(IV.Constants.Classes.fadeIn);
+        ToggleViews.loadedPlayer.classList.remove(IV.Constants.Classes.animate);
+        ToggleViews.loadedPlayer.classList.add(IV.Constants.Classes.hidden);
+    }
+
+    function restartIntro() {
+        playerViewReset();
+        window.setTimeout(function() {
+            animatePlayerPageLoading();
+        }, 0);
+    }
+
     function animateLandingPage() {
         recursiveAnimate(1, 4);
     }
 
-    function animateLandingPageReset() {
+    function landingViewReset() {
         for(var i = 0, l = animateTimers.length; i < l; i++) {
             animateTimers[i]();
         }
@@ -271,7 +345,7 @@ IV.View = (function() {
             var timer = setTimeout(function() {
                 var element = document.getElementsByClassName("animate-onload-" + delay);
                 for(var i = 0, l = element.length; i < l; i++) {
-                    element[i].classList.add(IV.Constants.Classes.animateCSSClass);
+                    element[i].classList.add(IV.Constants.Classes.animate);
                 }
 
                 if (delay < depth)
@@ -283,7 +357,7 @@ IV.View = (function() {
                 clearTimeout(timer);
                 var element = document.getElementsByClassName("animate-onload-" + delay);
                 for(var i = 0, l = element.length; i < l; i++) {
-                    element[i].classList.remove(IV.Constants.Classes.animateCSSClass);
+                    element[i].classList.remove(IV.Constants.Classes.animate);
                 }
             }
             animateTimers.push(destroyCallback);            
@@ -293,7 +367,9 @@ IV.View = (function() {
     return {
         init: init,
         animateLandingPage: animateLandingPage,
-        animateLandingPageReset: animateLandingPageReset,
+        landingViewReset: landingViewReset,
+        animatePlayerPageLoading: animatePlayerPageLoading,
+        playerViewReset: playerViewReset,
         hideMenu: hideMenu
     };
 }.call({}));
