@@ -107,6 +107,7 @@ IV.Service = (function() {
     }
 
     function getPlaylistByIssueNumber(issueNumber) {
+        issueNumber = issueNumber.toString();
         for(var i = 0, l = playlists.length; i < l; i++) {
             if (playlists[i].issueNumber === issueNumber)
                 return playlists[i];
