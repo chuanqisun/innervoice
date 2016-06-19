@@ -324,6 +324,8 @@ IV.View = (function() {
             if (targetMode !== MenuModes[menuMode])
                 // hide other modes
                 MenuModes[menuMode].classList.add(IV.Constants.Classes.hidden);
+                MenuModes[menuMode].classList.remove(IV.Constants.Classes.rightOverflowHide);
+                MenuModes[menuMode].classList.remove(IV.Constants.Classes.active);
         }
 
         // show selected mode
