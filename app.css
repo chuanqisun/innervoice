@@ -398,5 +398,5 @@ button {
 /* ========== Component - Content Container ========== */
 .content-overlay {
     position: absolute;
-    pointer-events: none;
+    /*pointer-events: none;*/
 }
