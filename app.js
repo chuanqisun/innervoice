@@ -53,7 +53,8 @@ IV.Constants = (function() {
         titlePrefix: "Issue No."
     }
 
-    var animateStepLength = 750;
+    var landingAnimationDelay = 1500;
+    var animateStepLength = 1500;
 
     function init() {
     }
@@ -64,7 +65,8 @@ IV.Constants = (function() {
         get IDs() { return IDs; },
         get animateStepLength() { return animateStepLength; },
         get Routes() { return Routes; },
-        get Texts() { return Texts; }
+        get Texts() { return Texts; },
+        get landingAnimationDelay() { return landingAnimationDelay; }
     }
 }.call({}));
 
@@ -136,30 +138,68 @@ IV.Service = (function() {
 
 // ==================== Router ====================
 IV.Router = (function() {
+    var routes = {
+        verify: {
+            hash: "#verify",
+            onEnter: onEnterVerifyView,
+            onExit: onExitVerifyView
+        },
+        confirm: {
+            hash: "#confirm",
+            onEnter: onEnterConfirmView,
+            onExit: onExitConfirmView
+        },
+        player: {
+            hash: "#player",
+            onEnter: onEnterPlayerView,
+            onExit: onExitPlayerView 
+        },
+        landing: {
+            hash: "#landing",
+            onEnter: onEnterLandingView,
+            onExit: onExitLandingView 
+        }
+    }
     function init() {
         window.onload = onEnterLandingView;
         window.onhashchange =  onHashChange;
-
-        window.onbeforeunload = function (e) {
-            console.log('d!');
-        };
-
         onHashChange();
     }
 
     function onHashChange() {
         switch (location.hash) {
-            case '#player':
-                onExitLandingView();
-                onEnterPlayerView();
+            case routes.verify.hash:
+                onExitAllBut('verify');
+                routes.verify.onEnter();
                 break;
-            case '#landing':
+            case routes.confirm.hash:
+                onExitAllBut('confirm');
+                routes.confirm.onEnter();
+                break;
+            case routes.player.hash:
+                onExitAllBut('player');
+                routes.player.onEnter();
+                break;
+            case routes.landing.hash:
             case '':
-                onExitPlayerView();
-                onEnterLandingView();
+                onExitAllBut('landing');
+                routes.landing.onEnter();
                 break;
         }
     }
+
+    function onExitAllBut(routeName) {
+        for(var route in routes) {
+            if(routeName !== route) {
+                routes[route].onExit();
+            }
+        }
+    }
+
+    function onEnterConfirmView() {}
+    function onExitConfirmView() {}
+    function onEnterVerifyView() {}
+    function onExitVerifyView() {}
 
     function onEnterLandingView() {
         IV.View.animateLandingPage();
@@ -199,6 +239,7 @@ IV.View = (function() {
     var MenuModes = {};
     var DynamicContent = {};
     var animateTimers = [];
+    var landingAnimationDelayTimer;
 
     function init() {
         fetchElements();
@@ -331,7 +372,10 @@ IV.View = (function() {
     }
 
     function animateLandingPage() {
-        recursiveAnimate(1, 4);
+        landingAnimationDelayTimer = setTimeout(function() {
+            recursiveAnimate(1, 2);
+        }, IV.Constants.landingAnimationDelay);
+        
     }
 
     function landingViewReset() {
@@ -339,9 +383,10 @@ IV.View = (function() {
             animateTimers[i]();
         }
         animateTimers = [];
+        clearTimeout(landingAnimationDelayTimer);
     }
 
-    function recursiveAnimate(delay, depth) {
+    function recursiveAnimate(delay, maxDelay) {
         (function() {    
             var timer = setTimeout(function() {
                 var element = document.getElementsByClassName("animate-onload-" + delay);
@@ -349,8 +394,8 @@ IV.View = (function() {
                     element[i].classList.add(IV.Constants.Classes.animate);
                 }
 
-                if (delay < depth)
-                    recursiveAnimate(delay + 1, depth);
+                if (delay < maxDelay)
+                    recursiveAnimate(delay + 1, maxDelay);
 
             }, IV.Constants.animateStepLength);
 

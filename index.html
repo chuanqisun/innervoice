@@ -31,25 +31,25 @@
                 <div id="dropdown" class="menu-container background-frosted-dark flex-layout-container full-screen-width full-screen-height flex-v-center flex-h-center top-overflow-hide">
                     <button id="hide-menu" class="primary-foregroud-dark full-screen-hide-button glyphicon clickable hover-highlight responsive-medium-icon">&#xe902;</button>
                     <div id="general-mode" class="flex-layout-container">
-                        <button id="restart-intro" class="primary-foregroud-dark clickable hover-highlight boxed-content-padding medium-b-margin light-border responsive-medium-font responsive-width">Intro</button>
-                        <button id="archive" class="primary-foregroud-dark disabled boxed-content-padding medium-b-margin light-border responsive-medium-font responsive-width">Archive</button>
-                        <button id="subscribe" class="primary-foregroud-dark clickable hover-highlight boxed-content-padding light-border responsive-medium-font responsive-width">Subscribe</button>
+                        <button id="restart-intro" class="primary-foregroud-dark clickable hover-highlight boxed-content-padding medium-b-margin light-border responsive-medium-font responsive-width round-border">Intro</button>
+                        <button id="archive" class="primary-foregroud-dark disabled boxed-content-padding medium-b-margin light-border responsive-medium-font responsive-width round-border">Archive</button>
+                        <button id="subscribe" class="primary-foregroud-dark clickable hover-highlight boxed-content-padding light-border responsive-medium-font responsive-width round-border">Subscribe</button>
                     </div>
                     <div id="subscribe-mode" class="flex-layout-container hidden">
                         <form action="//github.us13.list-manage.com/subscribe/post?u=24b2e89a93987c59ce1ad6472&amp;id=476a42bdda" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate">
                             <div class="medium-b-margin">
-                                <input type="text" value="" name="FIRSTNAME" class="primary-foregroud-dark focus-highlight boxed-content-padding responsive-medium-font responsive-width required light-border" required id="mce-FIRSTNAME" placeholder="Enter first name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter first Name'">
+                                <input type="text" value="" name="FIRSTNAME" class="primary-foregroud-dark focus-highlight boxed-content-padding responsive-medium-font responsive-width required light-border round-border" required id="mce-FIRSTNAME" placeholder="Enter first name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter first Name'">
                             </div>
                             <div class="medium-b-margin">
-                                <input type="text" value="" name="LASTNAME" class="primary-foregroud-dark focus-highlight boxed-content-padding responsive-medium-font responsive-width required light-border" required id="mce-LASTNAME" placeholder="Enter last name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter last Name'">
+                                <input type="text" value="" name="LASTNAME" class="primary-foregroud-dark focus-highlight boxed-content-padding responsive-medium-font responsive-width required light-border round-border" required id="mce-LASTNAME" placeholder="Enter last name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter last Name'">
                             </div>
                             <div class="medium-b-margin">
-                                <input type="email" value="" name="EMAIL" class="primary-foregroud-dark focus-highlight boxed-content-padding responsive-medium-font responsive-width required light-border email" id="mce-EMAIL" required placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+                                <input type="email" value="" name="EMAIL" class="primary-foregroud-dark focus-highlight boxed-content-padding responsive-medium-font responsive-width required light-border email round-border" required id="mce-EMAIL" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
                             </div>
                             <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                             <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_24b2e89a93987c59ce1ad6472_476a42bdda" tabindex="-1" value=""></div>
                             <div>
-                                <button id="submit" class="primary-foregroud-dark clickable hover-highlight boxed-content-padding light-border responsive-medium-font responsive-width">Submit</button>
+                                <button id="submit" class="primary-foregroud-dark clickable hover-highlight boxed-content-padding light-border responsive-medium-font responsive-width round-border">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -63,14 +63,40 @@
             </div>
         </div>
 
+        <!--verify route-->
+        <div id="verify" class="route">
+            <div class="full-screen-width flex-layout-container flex-h-center flex-v-center background-frosted-light banner-padding">
+                <div class="full-screen-width text-h-center banner-padding">
+                    <div class="responsive-text-left-align">
+                        <h2 class="primary-foregroud-light responsive-medium-font medium-b-margin">Almost finished...</h2>
+                        <p class="primary-foregroud-light responsive-small-font small-b-margin">We need to confirm your email address.</p>
+                        <p class="primary-foregroud-light responsive-small-font">To complete the subscription process, please click the link in the email we just sent you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--comfirm route-->
+        <div id="confirm" class="route">
+            <div class="full-screen-width flex-layout-container flex-h-center flex-v-center background-frosted-light banner-padding">
+                <div class="full-screen-width text-h-center banner-padding">
+                    <div class="responsive-text-left-align">
+                        <h2 class="primary-foregroud-light responsive-medium-font large-b-margin">Thank you!</h2>
+                        <p class="primary-foregroud-light responsive-small-font small-b-margin">Your subscription to our updates has been confirmed.</p>
+                        <p class="primary-foregroud-light responsive-small-font">We will send you an email when the next playlist is ready. You can check out the current playlist <a href="#player" class="primaryHref clickable">here</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!--landing route-->
         <div id="landing" class="route">
             <div class="full-screen-width flex-layout-container flex-h-center flex-v-center background-frosted-light banner-padding">
                 <h1 class="primary-foregroud-light responsive-large-font small-b-margin">
-                    <span class="transition-expandee animate-onload-2" data-expander-text="NNER&nbsp;|&nbsp;">I</span><span class="transition-expandee animate-onload-2" data-expander-text="OICE">V</span>
+                    <span class="transition-expandee animate-onload-1" data-expander-text="NNER&nbsp;|&nbsp;">I</span><span class="transition-expandee animate-onload-1" data-expander-text="OICE">V</span>
                 </h1>
-                <h2 class="primary-foregroud-light responsive-medium-font fade-in-insert animate-onload-2 huge-b-margin text-h-center">postrock | indie rock | neofolk | alternative | soundtracks </h2>
-                <button id="launch" class="clickable hover-highlight light-border boxed-content-custom-padding primary-foregroud-light responsive-medium-font fade-in-insert animate-onload-4">
+                <h2 class="primary-foregroud-light responsive-medium-font fade-in-insert animate-onload-1 huge-b-margin text-h-center">postrock | indie rock | neofolk | alternative | soundtracks </h2>
+                <button id="launch" class="clickable hover-highlight light-border boxed-content-custom-padding primary-foregroud-light responsive-medium-font fade-in-insert animate-onload-2 round-border">
                     <span class="glyphicon clickable text-v-center small-r-margin">&#xe904;</span><span class="clickable text-v-center">Listen for free</span>
                 </button>
             </div>
