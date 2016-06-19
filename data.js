@@ -20,9 +20,9 @@ var Data =
     "playlists": [
         {
             "issueNumber": "3",
-            "title": "Don't Wake Up",
+            "title": "Devil's Hour",
             "dates": "1466278310",
-            "intro": "Emotions swallow people whole as that last strand of unreality slips away.",
+            "intro": "Don't wake up between 3 and 4 am. That's when emotions swallow people whole.",
             "embedUrl": "http://8tracks.com/mixes/8062642/player_v3_universal"
         }
     ]
