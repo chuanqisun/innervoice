@@ -164,9 +164,6 @@ html, body {
 .clickable {
     pointer-events: all;
     cursor: pointer;
-    -webkit-user-select: auto;
-    -ms-user-select: auto;
-    -moz-user-select: auto;
 }
 
 .typable {
