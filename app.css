@@ -108,6 +108,11 @@ html, body {
     text-align: left;
 }
 
+/*a hack to make text wrap in IE 11*/
+.ie11-flex-wrappable {
+    width: 100%;
+}
+
 /* ========== margin and padding ==========*/
 .banner-padding {
     box-sizing: border-box;
