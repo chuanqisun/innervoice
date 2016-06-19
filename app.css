@@ -151,7 +151,6 @@ html, body {
 /* ========== Global Interactions ========== */
 * {
     cursor: default;
-    user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
     -moz-user-select: none;
@@ -160,6 +159,17 @@ html, body {
 .clickable {
     pointer-events: all;
     cursor: pointer;
+    -webkit-user-select: auto;
+    -ms-user-select: auto;
+    -moz-user-select: auto;
+}
+
+.typable {
+    pointer-events: all;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+    -moz-user-select: text;
+    cursor: text;
 }
 
 /* ========== Content ========== */
@@ -330,10 +340,6 @@ input {
     outline: none;
     border: none;
     color: white;
-}
-
-input[type=email], input[type=text] {
-  cursor: text;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
