@@ -172,6 +172,10 @@ html, body {
     cursor: text;
 }
 
+.click-through {
+    pointer-events: none;
+}
+
 /* ========== Content ========== */
 .landing-splash {
     background: url(images/background.jpg);

@@ -23,7 +23,8 @@ IV.Constants = (function() {
         fadeIn: "fade-in",
         fadeOut: "fade-out",
         duration3s: "duration-3s",
-        duration1s: "duration-1s"
+        duration1s: "duration-1s",
+        clickThrough: "click-through"
     }
 
     var IDs = {
@@ -343,6 +344,7 @@ IV.View = (function() {
         ToggleViews.contentBanner.classList.remove(IV.Constants.Classes.animate);
         ToggleViews.contentBanner.classList.remove(IV.Constants.Classes.fadeIn);
         ToggleViews.contentBanner.classList.remove(IV.Constants.Classes.duration3s);
+        ToggleViews.contentBanner.classList.add(IV.Constants.Classes.clickThrough);
         ToggleViews.contentBanner.classList.add(IV.Constants.Classes.duration1s);
         ToggleViews.contentBanner.classList.add(IV.Constants.Classes.fadeOut);
         window.setTimeout(function() {
@@ -358,6 +360,7 @@ IV.View = (function() {
         ToggleViews.contentBanner.classList.remove(IV.Constants.Classes.animate);
         ToggleViews.contentBanner.classList.remove(IV.Constants.Classes.fadeOut);
         ToggleViews.contentBanner.classList.remove(IV.Constants.Classes.duration1s);
+        ToggleViews.contentBanner.classList.remove(IV.Constants.Classes.clickThrough);
         ToggleViews.contentBanner.classList.add(IV.Constants.Classes.duration3s);
         ToggleViews.contentBanner.classList.add(IV.Constants.Classes.fadeIn);
         ToggleViews.loadedPlayer.classList.remove(IV.Constants.Classes.animate);
