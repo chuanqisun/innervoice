@@ -349,7 +349,7 @@ IV.View = (function() {
             ToggleViews.contentBanner.classList.add(IV.Constants.Classes.animate);
             ToggleViews.loadedPlayer.classList.remove(IV.Constants.Classes.hidden);
             ToggleViews.loadedPlayer.classList.add(IV.Constants.Classes.animate);
-        }, 0);
+        }, 10);
     }
 
     function playerViewReset() {
@@ -368,7 +368,7 @@ IV.View = (function() {
         playerViewReset();
         window.setTimeout(function() {
             animatePlayerPageLoading();
-        }, 0);
+        }, 10);
     }
 
     function animateLandingPage() {
